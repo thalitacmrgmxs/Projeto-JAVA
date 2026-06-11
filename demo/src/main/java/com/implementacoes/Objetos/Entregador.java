@@ -1,3 +1,4 @@
+package com.implementacoes.Objetos;
 public class Entregador extends Funcionario {
     //atributos
     private int gasolina_atual;

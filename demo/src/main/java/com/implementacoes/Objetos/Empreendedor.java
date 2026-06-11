@@ -1,3 +1,4 @@
+package com.implementacoes.Objetos;
 public class Empreendedor extends Usuario{
 
     //atributos

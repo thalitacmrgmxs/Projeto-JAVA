@@ -1,3 +1,4 @@
+package com.implementacoes.Objetos;
 public class Estoquista extends Funcionario {
 
     public Estoquista(String nome, String senha, String email, float salario, String cargo, int data_de_admissao) {

@@ -1,3 +1,4 @@
+package com.implementacoes.Objetos;
 public abstract class Usuario {
     //atributos privados
     private String nome;

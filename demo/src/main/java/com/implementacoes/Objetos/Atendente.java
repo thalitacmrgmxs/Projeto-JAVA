@@ -1,3 +1,5 @@
+package com.implementacoes.Objetos;
+
 public class Atendente  extends Funcionario{
 
     public Atendente(String nome, String senha, String email, float salario, String cargo, int data_de_admissao) {

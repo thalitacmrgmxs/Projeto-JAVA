@@ -1,3 +1,4 @@
+package com.implementacoes.Objetos;
 import java.util.ArrayList;
 
 public class Funcionario extends Usuario {
