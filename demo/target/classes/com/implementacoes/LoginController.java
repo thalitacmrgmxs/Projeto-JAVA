@@ -10,7 +10,7 @@ public class LoginController {
 
     @FXML
     private ChoiceBox<?> opcoes_classes;
-//oioi
+//
 
     @FXML
     private TextField senha;
