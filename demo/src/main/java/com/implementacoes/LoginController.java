@@ -37,7 +37,7 @@ public class LoginController implements Initializable{
         System.out.println(senhaString);
 
         //muda a página
-        App.setRoot("primary");
+        App.setRoot("Dono");
         
     }
 
