@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
 public class DonoController {
-    //tesye
+    //Gerenciador 
     @FXML
     private TableView<?> EstoqueTable;
 
