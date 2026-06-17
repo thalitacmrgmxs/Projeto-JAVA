@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.implementacoes.Objetos.Gerenciador;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +28,8 @@ public class LoginController implements Initializable{
 
     @FXML
     void fazerLogin(ActionEvent event) throws IOException{
+        //trazendo o gerenciador
+        Gerenciador gerenciador = new Gerenciador();
         //obter a escolha de opções
         String escolha = opcoes_classes.getValue();
         System.out.println(escolha);
@@ -35,9 +39,14 @@ public class LoginController implements Initializable{
         //obter a senha
         String senhaString = senha.getText();
         System.out.println(senhaString);
+        //verificação
+        gerenciador.buscar(usernameString, senhaString);
+        
 
-        //muda a página
-        App.setRoot("Dono");
+    
+
+        
+       
         
     }
 
