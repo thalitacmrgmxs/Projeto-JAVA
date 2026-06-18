@@ -29,18 +29,25 @@ public class LoginController implements Initializable{
     @FXML
     void fazerLogin(ActionEvent event) throws IOException{
         //trazendo o gerenciador
-        Gerenciador gerenciador = new Gerenciador();
+        //Gerenciador gerenciador = new Gerenciador();
         //obter a escolha de opções
         String escolha = opcoes_classes.getValue();
-        System.out.println(escolha);
+        //System.out.println(escolha);
         //obter o nome do usuario
         String usernameString = username.getText();
-        System.out.println(usernameString);
+       // System.out.println(usernameString);
         //obter a senha
         String senhaString = senha.getText();
-        System.out.println(senhaString);
+        //System.out.println(senhaString);
         //verificação
-        gerenciador.buscar(usernameString, senhaString);
+
+        Gerenciador.setSelecionado((Gerenciador.buscar(usernameString, senhaString)));
+        
+        System.out.println(Gerenciador.buscar(usernameString, senhaString));
+        if (Gerenciador.getSelecionado() != null ) {
+            App.setRoot("Dono");
+        }
+        
         
 
     
