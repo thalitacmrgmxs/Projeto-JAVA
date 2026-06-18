@@ -6,24 +6,23 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class Gerenciador implements Initializable {
+public class Gerenciador{
     private static ArrayList<Empreendedor> listaEmp = new ArrayList<Empreendedor>();
     private static Empreendedor dono;
 
     private Gerenciador() {
      
-        adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
     }
 
-    public ArrayList<Empreendedor> getListaEmp() {
+    public static ArrayList<Empreendedor> getListaEmp() {
         return listaEmp;
     }
 
-    public void setListaEmp(ArrayList<Empreendedor> listaEmp) {
-        this.listaEmp = listaEmp;
+    public static void setListaEmp(ArrayList<Empreendedor> listaEmpnew) {
+        listaEmp = listaEmpnew;
     }
 
-    public void adicionar(Empreendedor dono) {
+    public static void adicionar(Empreendedor dono) {
         listaEmp.add(dono);
     } 
     
@@ -58,13 +57,12 @@ public class Gerenciador implements Initializable {
    }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-       
+   static {
+        adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
     }
+   }
+    
 
     
     
     
-    
-}
