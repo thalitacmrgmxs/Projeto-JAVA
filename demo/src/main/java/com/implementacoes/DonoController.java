@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 public class DonoController implements Initializable {
     //variaveis
-    private Empreendedor dono;
+    private Empreendedor dono = Gerenciador.getSelecionado();
 
     public DonoController(Empreendedor dono) {
         this.dono = dono;
@@ -25,6 +25,7 @@ public class DonoController implements Initializable {
         this.dono = Gerenciador.getSelecionado();
     }
 
+    //Objetos fxml
     @FXML
     private TableView<?> EstoqueTable;
 
@@ -67,14 +68,16 @@ public class DonoController implements Initializable {
     @FXML
     private TableColumn<?, ?> taskFuncColumn1;
 
+    //métodos -- EM ANÁLISE da eficiẽncia desses métodos
     public Empreendedor getDono() {
-        return dono;
+        return dono;    //Retornar o dono
     }
 
     public void setDono(Empreendedor dono) {
-        this.dono = dono;
+        this.dono = dono;   //determinar o dono
     }
 
+    //Inicializar as variaveis presentes no GUI
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        TextNome.setText(dono.getNome());
