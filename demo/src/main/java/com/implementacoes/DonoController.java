@@ -81,6 +81,10 @@ public class DonoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        TextNome.setText(dono.getNome());
+       
     }
+
+   
+    
 }
  
