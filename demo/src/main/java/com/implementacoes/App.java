@@ -1,4 +1,4 @@
-package com.implementacoes;
+package com.implementacoes; //formatado
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,27 +14,28 @@ import com.implementacoes.Objetos.Gerenciador;
  * JavaFX App
  */
 public class App extends Application {
-
+    //variaveis
     private static Scene scene;
     
 
-    
+    //método do javafx para iniciar o palco
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Login"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
-
+    //determinar a rota do fxml
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-
+    //método responsavel por carregar o fxml
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    //lançar o sistema
     public static void main(String[] args) {
         launch();
         //teste
@@ -43,13 +44,7 @@ public class App extends Application {
 
     }
 
-    public static Scene getScene() {
-        return scene;
-    }
-
-    public static void setScene(Scene scene) {
-        App.scene = scene;
-    }
+   
 
  
 

@@ -1,4 +1,4 @@
-package com.implementacoes;
+package com.implementacoes; //formatado
 
 
 import java.net.URL;
@@ -82,9 +82,5 @@ public class DonoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
        TextNome.setText(dono.getNome());
     }
-
- 
-
-    
-
 }
+ 
