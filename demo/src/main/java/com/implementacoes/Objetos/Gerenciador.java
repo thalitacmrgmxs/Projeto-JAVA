@@ -1,31 +1,34 @@
-package com.implementacoes.Objetos;
+package com.implementacoes.Objetos; //formatado
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.fxml.Initializable;
 
 public class Gerenciador{
+    //variaveis static(acessiveis a todos)
     private static ArrayList<Empreendedor> listaEmp = new ArrayList<Empreendedor>();
     private static Empreendedor dono;
 
+    //Construtor
     private Gerenciador() {
      
     }
 
+    //métodos
     public static ArrayList<Empreendedor> getListaEmp() {
-        return listaEmp;
+        return listaEmp;    //retornar a lista de empreendedores
     }
 
     public static void setListaEmp(ArrayList<Empreendedor> listaEmpnew) {
-        listaEmp = listaEmpnew;
+        listaEmp = listaEmpnew; //Altera a lista
     }
 
     public static void adicionar(Empreendedor dono) {
-        listaEmp.add(dono);
+        listaEmp.add(dono); //adicionar um empreendedor a lista
     } 
     
+    //método criado para buscar um funcionario especifico
     public static Empreendedor buscar(String nome, String senha) {
     // Evita erro se quem chamou o método passou parâmetros nulos
     if (nome == null || senha == null) {
@@ -47,16 +50,16 @@ public class Gerenciador{
     return null; // Não encontrou nenhum correspondente
 }
 
-    
+    //retonar o selecionado 
    public static Empreendedor getSelecionado() {
         return dono;
    }
-
+   //determinar o selecionado
    public static void setSelecionado(Empreendedor donoSelecionado) {
         dono = donoSelecionado;
    }
 
-
+   //método selecionado quando o programa é ligado
    static {
         adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
     }
