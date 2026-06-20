@@ -1,3 +1,5 @@
+//classe para os diversos produtos
+
 package com.implementacoes.Objetos;
 public class Produtos {
     //atributos
