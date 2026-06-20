@@ -1,3 +1,6 @@
+//Classe abstrata criada para criação das subClasses apartir do Usuario
+//(Empreendedor, Funcionario, Cliente)
+
 package com.implementacoes.Objetos;
 public abstract class Usuario {
     //atributos privados

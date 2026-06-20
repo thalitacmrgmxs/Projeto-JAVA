@@ -1,3 +1,8 @@
+/*Classe criada para criação dos funcionarios, a qual será utilizado
+futuramente up e down castings para organizar os fucionarios
+            IMPORTANTE: usar interface para os métodos dos funcionarios
+*/
+
 package com.implementacoes.Objetos;
 import java.util.ArrayList;
 
