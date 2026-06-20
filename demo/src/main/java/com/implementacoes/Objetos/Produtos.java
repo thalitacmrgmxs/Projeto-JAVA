@@ -5,12 +5,17 @@ public class Produtos {
     //atributos
     private String nome;
     private double valor;
+    private double quant;
     
-    public Produtos(String nome, double valor) {
+   
+
+   
+    
+    public Produtos(String nome, double valor, double quant) {
         this.nome = nome;
         this.valor = valor;
+        this.quant = quant;
     }
-    
     public String getNome() {
         return nome;
     }
@@ -24,6 +29,12 @@ public class Produtos {
         this.valor = valor;
     }
     
-    
+     public double getQuant() {
+        return quant;
+    }
+
+    public void setQuant(double quant) {
+        this.quant = quant;
+    }
     
 }

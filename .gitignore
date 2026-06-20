@@ -1,8 +1,18 @@
-# Ignora a pasta de configurações do VS Code
-.vscode/
-
-# Ignora a pasta de build do Maven
-target/
-
-# Ignora todos os arquivos compilados do Java
+# Compilados do Java
 *.class
+*.war
+*.ear
+*.jar
+
+# Pastas de build (onde o código compilado vai)
+target/
+bin/
+build/
+
+# Configurações do VS Code ou Eclipse / IntelliJ
+.settings/
+.classpath
+.project
+.metadata/
+.idea/
+*.iml

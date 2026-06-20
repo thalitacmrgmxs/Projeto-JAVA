@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
+import com.implementacoes.Objetos.Produtos;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +32,7 @@ public class DonoController implements Initializable {
 
     //Objetos fxml
     @FXML
-    private TableView<?> EstoqueTable;
+    private TableView<Produtos> EstoqueTable;
 
     @FXML
     private TableView<Funcionario> FuncionariosTable;
@@ -42,10 +43,10 @@ public class DonoController implements Initializable {
     private TableColumn<Funcionario, String> NomeFuncColumn;
 
     @FXML
-    private TableColumn<?, ?> QuantColumn;
+    private TableColumn<Produtos, Double> QuantColumn;
     
     @FXML
-    private TableColumn<?, ?> produtosColumn;
+    private TableColumn<Produtos, String> produtosColumn;
 
     @FXML
     private TableColumn<Funcionario, String> taskFuncColumn1;
@@ -83,7 +84,19 @@ public class DonoController implements Initializable {
     }
 
     //Criar um função para preencher o estoque
+    private void preencherEstoqueTable() {
+        //determinando o valor correspondente de cada coluna
+        produtosColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
+        //criando a lista e inserindo os produtos
+        ObservableList<Produtos> lista = FXCollections.observableArrayList(
+            new Produtos("ração", 20, 2)
+        );
+
+        //inserindo na tabela
+        EstoqueTable.setItems(lista);
+    }
     //Criar um método para preencher a tabela de funcionarios
     private void preencherFuncionariosTable() {
         //determinado o valor correspondete a cada coluna
@@ -100,6 +113,8 @@ public class DonoController implements Initializable {
         //inserindo na tabela 
         FuncionariosTable.setItems(lista);
     }
+
+
     //Inicializar as variaveis presentes no GUI
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,6 +125,7 @@ public class DonoController implements Initializable {
 
        if (dono.getNome().equalsIgnoreCase("Thalita")) {
             preencherFuncionariosTable();
+            preencherEstoqueTable();
 
     }
 
