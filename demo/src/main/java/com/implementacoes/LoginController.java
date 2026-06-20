@@ -52,7 +52,7 @@ public class LoginController implements Initializable{
         System.out.println(Gerenciador.getSelecionado()); //saída para teste
         
         // 3. Verifica se achou o usuário e se ele bate com o tipo escolhido (Ex:
-        // "Dono"/"Empreendedor")
+        // "Empreendedor")
         if (encontrado != null &&  "Empreendedor".equalsIgnoreCase(escolha)) {
 
             // Guarda globalmente o usuário que logou
@@ -78,7 +78,7 @@ public class LoginController implements Initializable{
         alert.showAndWait();
     }
 
-    // bloqueando o botão de confirmar
+    
 
     // inicializando com opções
     @Override
