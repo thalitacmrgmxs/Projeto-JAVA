@@ -4,22 +4,47 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddFuncController {
-
+public class AddFuncController implements Initializable {
+    //Construtor vazio
     public AddFuncController() {}
     
-    
+    //FXMLS
+     @FXML
+    private TextField FuncEmail;
 
+    @FXML
+    private TextField funcAdmissao;
+
+    @FXML
+    private ChoiceBox<String> funcCargo;
+
+    @FXML
+    private TextField funcNome;
+
+    @FXML
+    private TextField funcSalario;
+
+    @FXML
+    void Confirmar(ActionEvent event) {
+
+    }
+
+    //método para lançar a janela
     public void start() {
         try {
      //1. carrega o fxml
-     java.net.URL fxmUrl = com.implementacoes.App.class.getResource("/com/implementacoes/primary.fxml");
+     java.net.URL fxmUrl = com.implementacoes.App.class.getResource("/com/implementacoes/AddFuncionario.fxml");
      FXMLLoader loader = new FXMLLoader((fxmUrl));
      Parent root = loader.load();
 
@@ -39,6 +64,16 @@ public class AddFuncController {
         ex.printStackTrace();
         System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
     }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        String[] opcoes = {"Estoquista", "Atendente", "Entregador"};
+        
+
+        // Popular o ChoiceBox de forma otimizada
+        funcCargo.setItems(FXCollections.observableArrayList(opcoes));
+        
     }
     
 
