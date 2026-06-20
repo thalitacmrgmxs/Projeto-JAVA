@@ -1,7 +1,7 @@
-package com.implementacoes;
+package com.implementacoes.Controllers;
 
 import java.io.IOException;
-
+import com.implementacoes.App;
 import javafx.fxml.FXML;
 
 public class PrimaryController {

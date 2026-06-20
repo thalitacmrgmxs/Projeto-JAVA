@@ -1,9 +1,11 @@
-package com.implementacoes; // Corrigido a formatação
+package com.implementacoes.Controllers; // Corrigido a formatação
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.implementacoes.App;
 
 import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Gerenciador;
