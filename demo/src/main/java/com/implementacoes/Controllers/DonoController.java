@@ -27,8 +27,8 @@ import javafx.stage.Stage;
 public class DonoController implements Initializable {
     //variaveis
     private Empreendedor dono = Gerenciador.getSelecionado();
-    private ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList();
-    private ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
+    protected static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList();
+    protected static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
 
     public DonoController(Empreendedor dono) {
         this.dono = dono;
@@ -99,6 +99,7 @@ public class DonoController implements Initializable {
     void plusFuncionarios(ActionEvent event) {
      //chamado o controller responsavel por capturar as interações na proxima tela EM ANALISE
      AddFuncController formulario = new AddFuncController();
+     formulario.start();
     } 
 
     //__________________________
