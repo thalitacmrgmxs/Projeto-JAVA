@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.implementacoes.Objetos.Funcionario;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,8 +38,11 @@ public class AddFuncController implements Initializable {
     private TextField funcSalario;
 
     @FXML
-    void Confirmar(ActionEvent event) {
+    private TextField funcSenha;
 
+    @FXML
+    void Confirmar(ActionEvent event) {
+        DonoController.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , Integer.parseInt(funcAdmissao.getText())));
     }
 
     //método para lançar a janela
@@ -66,6 +71,7 @@ public class AddFuncController implements Initializable {
     }
     }
 
+    //inicialização
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String[] opcoes = {"Estoquista", "Atendente", "Entregador"};

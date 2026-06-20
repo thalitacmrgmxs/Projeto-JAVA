@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25.0.1" fx:controller="com.implementacoes.Controllers.AddFuncController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.AddFuncController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="594.0">
          <children>
@@ -27,8 +27,8 @@
             <Label layoutX="343.0" layoutY="97.0" prefHeight="16.0" prefWidth="66.0" text="Salario" />
             <TextField fx:id="funcAdmissao" layoutX="343.0" layoutY="190.0" />
             <Label layoutX="343.0" layoutY="166.0" prefHeight="16.0" prefWidth="144.0" text="Data de admissão" />
-            <TextField fx:id="funcSalario" layoutX="343.0" layoutY="258.0" />
-            <Label layoutX="343.0" layoutY="234.0" prefHeight="16.0" prefWidth="66.0" text="Salario" />
+            <TextField fx:id="funcSenha" layoutX="343.0" layoutY="258.0" />
+            <Label layoutX="343.0" layoutY="234.0" prefHeight="16.0" prefWidth="66.0" text="Senha" />
             <ChoiceBox fx:id="funcCargo" layoutX="64.0" layoutY="190.0" prefHeight="24.0" prefWidth="168.0" />
             <Button layoutX="261.0" layoutY="327.0" mnemonicParsing="false" onAction="#Confirmar" text="Button" />
          </children></AnchorPane>
