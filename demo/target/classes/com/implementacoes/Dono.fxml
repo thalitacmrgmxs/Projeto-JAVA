@@ -36,7 +36,7 @@
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="133.0" layoutX="313.0" layoutY="116.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="212.0" />
             <Text layoutX="341.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: " wrappingWidth="64.7294921875" />
-            <Text layoutX="341.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empreendedor:" wrappingWidth="105.7294921875" />
+            <Text layoutX="341.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Empreendedor:" wrappingWidth="105.7294921875" />
             <Text layoutX="341.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Situação:" wrappingWidth="64.7294921875" />
             <Separator layoutX="-71.0" layoutY="56.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="5.0" prefWidth="852.0" style="-fx-border-color: black;" />
             <Text layoutX="36.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque" wrappingWidth="144.4091796875">
@@ -55,11 +55,11 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <TableView fx:id="EstoqueTable1" layoutX="340.0" layoutY="317.0" prefHeight="200.0" prefWidth="376.0">
+            <TableView fx:id="FuncionariosTable" layoutX="340.0" layoutY="317.0" prefHeight="200.0" prefWidth="376.0">
                <columns>
                   <TableColumn fx:id="NomeFuncColumn" prefWidth="109.0" text="Nome" />
                   <TableColumn fx:id="FuncaoFuncColumn" prefWidth="124.0" text="Função" />
-                  <TableColumn fx:id="taskFuncColumn1" prefWidth="124.0" text="Função" />
+                  <TableColumn fx:id="taskFuncColumn1" prefWidth="124.0" text="Task" />
                </columns>
             </TableView>
             <Text fx:id="TextVendas" layoutX="118.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />

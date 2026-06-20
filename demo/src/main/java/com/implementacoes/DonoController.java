@@ -5,12 +5,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.implementacoes.Objetos.Empreendedor;
+import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 public class DonoController implements Initializable {
@@ -30,17 +34,22 @@ public class DonoController implements Initializable {
     private TableView<?> EstoqueTable;
 
     @FXML
-    private TableView<?> EstoqueTable1;
+    private TableView<Funcionario> FuncionariosTable;
+    @FXML
+    private TableColumn<Funcionario, String> FuncaoFuncColumn;
 
     @FXML
-    private TableColumn<?, ?> FuncaoFuncColumn;
-
-    @FXML
-    private TableColumn<?, ?> NomeFuncColumn;
+    private TableColumn<Funcionario, String> NomeFuncColumn;
 
     @FXML
     private TableColumn<?, ?> QuantColumn;
+    
+    @FXML
+    private TableColumn<?, ?> produtosColumn;
 
+    @FXML
+    private TableColumn<Funcionario, String> taskFuncColumn1;
+    
     @FXML
     private Text TextCompras;
 
@@ -62,11 +71,7 @@ public class DonoController implements Initializable {
     @FXML
     private Text nameShop;
 
-    @FXML
-    private TableColumn<?, ?> produtosColumn;
-
-    @FXML
-    private TableColumn<?, ?> taskFuncColumn1;
+  
 
     //métodos -- EM ANÁLISE da eficiẽncia desses métodos
     public Empreendedor getDono() {
@@ -77,14 +82,38 @@ public class DonoController implements Initializable {
         this.dono = dono;   //determinar o dono
     }
 
+    //Criar um função para preencher o estoque
+
+    //Criar um método para preencher a tabela de funcionarios
+    private void preencherFuncionariosTable() {
+        //determinado o valor correspondete a cada coluna
+        NomeFuncColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
+        taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
+        
+        //criando a lista e inserindo os funcionarios
+        ObservableList<Funcionario> lista = FXCollections.observableArrayList(
+            new Funcionario("ester", "123", "email", 2000, "motoboy", 12, 5),
+            new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12, 10)
+            
+        );
+        //inserindo na tabela 
+        FuncionariosTable.setItems(lista);
+    }
     //Inicializar as variaveis presentes no GUI
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        TextNome.setText(dono.getNome());
-       
+       nameShop.setText(dono.getNomeEmpreendimento());
+       TextEmpreendedor.setText(String.valueOf(dono.getId_empresa()));
+     
+
+       if (dono.getNome().equalsIgnoreCase("Thalita")) {
+            preencherFuncionariosTable();
+
     }
 
    
     
-}
+}}
  

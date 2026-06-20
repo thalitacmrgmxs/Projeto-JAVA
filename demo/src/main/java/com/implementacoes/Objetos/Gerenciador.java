@@ -64,6 +64,7 @@ public class Gerenciador{
    //método selecionado quando o programa é ligado
    static {
         adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
+        adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
     }
    }
     

@@ -3,9 +3,12 @@ public class Entregador extends Funcionario {
     //atributos
     private int gasolina_atual;
 
-    public Entregador(String nome, String senha, String email, float salario, String cargo, int data_de_admissao) {
-        super(nome, senha, email, salario, cargo, data_de_admissao);
-        gasolina_atual = 100;
+    
+
+    public Entregador(String nome, String senha, String email, float salario, String cargo, int data_de_admissao,
+            double tarefas_Atuais, int gasolina_atual) {
+        super(nome, senha, email, salario, cargo, data_de_admissao, tarefas_Atuais);
+        this.gasolina_atual = gasolina_atual;
     }
 
     //método para receber gasolina de forma que não ultrapasse 100
