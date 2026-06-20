@@ -50,6 +50,8 @@ public class Gerenciador{
     return null; // Não encontrou nenhum correspondente
 }
 
+
+
     //retonar o selecionado 
    public static Empreendedor getSelecionado() {
         return dono;

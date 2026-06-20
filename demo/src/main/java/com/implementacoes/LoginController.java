@@ -3,7 +3,6 @@ package com.implementacoes; // Corrigido a formatação
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.implementacoes.Objetos.Empreendedor;
@@ -35,6 +34,9 @@ public class LoginController implements Initializable{
         String usernameString = username.getText(); //variavel que armazena o nome do usuario
         String senhaString = senha.getText();   //variavel que armazena a senha
 
+        //abaixo estão as linhas de saídas para testes
+        System.out.println("nome: " + usernameString);
+        System.out.println("senha: " + senhaString);
         System.out.println(Gerenciador.getListaEmp());  //Comando para testar
 
 
@@ -46,11 +48,12 @@ public class LoginController implements Initializable{
 
         // 2. Faz a busca uma única vez e guarda em uma variável local
         Empreendedor encontrado = Gerenciador.buscar(usernameString, senhaString);
+        //Gerenciador.setSelecionado(encontrado); //atribui ao setselecionado
         System.out.println(Gerenciador.getSelecionado()); //saída para teste
         
         // 3. Verifica se achou o usuário e se ele bate com o tipo escolhido (Ex:
         // "Dono"/"Empreendedor")
-        if (encontrado != null && "Dono".equalsIgnoreCase(escolha)) {
+        if (encontrado != null &&  "Empreendedor".equalsIgnoreCase(escolha)) {
 
             // Guarda globalmente o usuário que logou
             Gerenciador.setSelecionado(encontrado);
