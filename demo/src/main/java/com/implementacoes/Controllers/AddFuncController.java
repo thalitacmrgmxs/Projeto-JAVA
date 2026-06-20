@@ -1,20 +1,23 @@
 package com.implementacoes.Controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AddFuncController {
 
-    public AddFuncController() {
+    public AddFuncController() {}
     
     
 
-    try {
+    public void start() {
+        try {
      //1. carrega o fxml
      java.net.URL fxmUrl = com.implementacoes.App.class.getResource("/com/implementacoes/primary.fxml");
      FXMLLoader loader = new FXMLLoader((fxmUrl));
@@ -36,9 +39,12 @@ public class AddFuncController {
         ex.printStackTrace();
         System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
     }
+    }
     
 
-}}
+
+
+}
 
 
 
