@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
@@ -11,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="619.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25.0.1" fx:controller="com.implementacoes.DonoController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.DonoController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="789.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="626.0" prefWidth="789.0">
          <children>
             <Text fx:id="nameShop" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da loja" wrappingWidth="144.4091796875">
                <font>
@@ -74,6 +75,10 @@
                 <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
+            <Button layoutX="224.0" layoutY="289.0" mnemonicParsing="false" onAction="#plusEstoque" text="+" />
+            <Button layoutX="196.0" layoutY="289.0" mnemonicParsing="false" onAction="#minusEstoque" text="-" />
+            <Button layoutX="687.0" layoutY="279.0" mnemonicParsing="false" onAction="#plusFuncionarios" text="+" />
+            <Button layoutX="659.0" layoutY="279.0" mnemonicParsing="false" onAction="#minusFuncionarios" text="-" />
          </children></AnchorPane>
          <!--teste-->
   </content>
