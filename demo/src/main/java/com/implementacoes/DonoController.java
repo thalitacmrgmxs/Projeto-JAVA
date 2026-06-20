@@ -11,6 +11,7 @@ import com.implementacoes.Objetos.Produtos;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -21,6 +22,8 @@ import javafx.scene.text.Text;
 public class DonoController implements Initializable {
     //variaveis
     private Empreendedor dono = Gerenciador.getSelecionado();
+    private ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList();
+    private ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
 
     public DonoController(Empreendedor dono) {
         this.dono = dono;
@@ -72,7 +75,25 @@ public class DonoController implements Initializable {
     @FXML
     private Text nameShop;
 
-  
+    @FXML
+    void minusEstoque(ActionEvent event) {
+         System.out.println("eliminar Estoque");
+    }
+
+    @FXML
+    void minusFuncionarios(ActionEvent event) {
+         System.out.println("eliminar funcionario");
+    }
+
+    @FXML
+    void plusEstoque(ActionEvent event) {
+        System.out.println("adicionar Estoque");
+    }
+
+    @FXML
+    void plusFuncionarios(ActionEvent event) {
+     System.out.println("adicionar funcionario");
+    }
 
     //métodos -- EM ANÁLISE da eficiẽncia desses métodos
     public Empreendedor getDono() {
@@ -89,13 +110,13 @@ public class DonoController implements Initializable {
         produtosColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
+        
         //criando a lista e inserindo os produtos
-        ObservableList<Produtos> lista = FXCollections.observableArrayList(
-            new Produtos("ração", 20, 2)
-        );
+        listaEstoque.add(new Produtos("ração", 20, 2));
+       
 
         //inserindo na tabela
-        EstoqueTable.setItems(lista);
+        EstoqueTable.setItems(listaEstoque);
     }
     //Criar um método para preencher a tabela de funcionarios
     private void preencherFuncionariosTable() {
@@ -104,14 +125,11 @@ public class DonoController implements Initializable {
         FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
         
-        //criando a lista e inserindo os funcionarios
-        ObservableList<Funcionario> lista = FXCollections.observableArrayList(
-            new Funcionario("ester", "123", "email", 2000, "motoboy", 12, 5),
-            new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12, 10)
-            
-        );
+
+        listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", 12, 5));
+        listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12, 10), new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12, 10));
         //inserindo na tabela 
-        FuncionariosTable.setItems(lista);
+        FuncionariosTable.setItems(listaFuncionarios);
     }
 
 
