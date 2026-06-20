@@ -26,7 +26,7 @@ public class App extends Application {
         stage.show();
     }
     //determinar a rota do fxml
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
     //método responsavel por carregar o fxml
