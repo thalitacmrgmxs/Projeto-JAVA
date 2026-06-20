@@ -18,12 +18,12 @@ public class Funcionario extends Usuario {
     private ArrayList<String> tarefas;
     
     //Construtor
-    public Funcionario(String nome, String senha, String email,float salario, String cargo, int data_de_admissao, double tarefas_Atuais) {
+    public Funcionario(String nome, String senha, String email,float salario, String cargo, int data_de_admissao) {
         super(nome, senha, email);
         this.salario = salario;
         this.cargo = cargo;
         this.data_de_admissao = data_de_admissao;
-        this.tarefas_Atuais = tarefas_Atuais;
+        this.tarefas_Atuais = 0;
 
         tarefas = new ArrayList<String>();
     }

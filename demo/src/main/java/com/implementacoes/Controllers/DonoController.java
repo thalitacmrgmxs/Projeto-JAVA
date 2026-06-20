@@ -135,8 +135,8 @@ public class DonoController implements Initializable {
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
         
 
-        listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", 12, 5));
-        listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12, 10), new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12, 10));
+        listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", 12));
+        listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12), new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12));
         //inserindo na tabela 
         FuncionariosTable.setItems(listaFuncionarios);
     }
