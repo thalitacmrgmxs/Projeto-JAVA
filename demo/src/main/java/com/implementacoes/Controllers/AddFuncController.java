@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -26,7 +27,7 @@ public class AddFuncController implements Initializable {
     private TextField FuncEmail;
 
     @FXML
-    private TextField funcAdmissao;
+    private DatePicker funcAdmissao;
 
     @FXML
     private ChoiceBox<String> funcCargo;
@@ -42,7 +43,7 @@ public class AddFuncController implements Initializable {
 
     @FXML
     void Confirmar(ActionEvent event) {
-        DonoController.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , Integer.parseInt(funcAdmissao.getText())));
+        DonoController.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue()));
     }
 
     //método para lançar a janela

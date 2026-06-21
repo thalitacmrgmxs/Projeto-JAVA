@@ -4,25 +4,31 @@ futuramente up e down castings para organizar os fucionarios
 */
 
 package com.implementacoes.Objetos;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart.Data;
 
 public class Funcionario extends Usuario {
     //atributos
     private float salario;
     private String cargo;
     //private int id;
-    private int data_de_admissao;
+    
+    private LocalDate data_de_admissao;
+
     private double tarefas_Atuais;
    
 
     private ArrayList<String> tarefas;
     
     //Construtor
-    public Funcionario(String nome, String senha, String email,float salario, String cargo, int data_de_admissao) {
+    public Funcionario(String nome, String senha, String email,float salario, String cargo, LocalDate data_de_admissao2) {
         super(nome, senha, email);
         this.salario = salario;
         this.cargo = cargo;
-        this.data_de_admissao = data_de_admissao;
+        this.data_de_admissao = data_de_admissao2;
         this.tarefas_Atuais = 0;
 
         tarefas = new ArrayList<String>();
@@ -44,11 +50,11 @@ public class Funcionario extends Usuario {
         this.cargo = cargo;
     }
 
-    public int getData_de_admissao() {
+    public LocalDate getData_de_admissao() {
         return data_de_admissao;
     }
 
-    public void setData_de_admissao(int data_de_admissao) {
+    public void setData_de_admissao(LocalDate data_de_admissao) {
         this.data_de_admissao = data_de_admissao;
     }
      public double getTarefas_Atuais() {
