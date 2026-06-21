@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -69,16 +67,11 @@
             <Text fx:id="TextNome" layoutX="388.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
             <Text fx:id="TextEmpreendedor" layoutX="447.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
             <Text fx:id="TextSituacao" layoutX="406.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
-            <MenuButton layoutX="513.0" layoutY="16.0" mnemonicParsing="false" text="Menu">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
             <Button layoutX="224.0" layoutY="289.0" mnemonicParsing="false" onAction="#plusEstoque" text="+" />
             <Button layoutX="196.0" layoutY="289.0" mnemonicParsing="false" onAction="#minusEstoque" text="-" />
             <Button layoutX="687.0" layoutY="279.0" mnemonicParsing="false" onAction="#plusFuncionarios" text="+" />
             <Button layoutX="659.0" layoutY="279.0" mnemonicParsing="false" onAction="#minusFuncionarios" text="-" />
+            <Button layoutX="614.0" layoutY="16.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />
          </children></AnchorPane>
          <!--teste-->
   </content>
