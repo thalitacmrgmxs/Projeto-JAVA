@@ -90,16 +90,20 @@ public class DonoController implements Initializable {
          System.out.println("eliminar funcionario");
     }
 
+    //Adicionar Estoque
     @FXML
     void plusEstoque(ActionEvent event) {
         System.out.println("adicionar Estoque");
+        AddEstoqController EstoqFormulario = new AddEstoqController();
+        EstoqFormulario.Start();
+        
     }
     //adicionar mais um funcionario
     @FXML
     void plusFuncionarios(ActionEvent event) {
      //chamado o controller responsavel por capturar as interações na proxima tela EM ANALISE
-     AddFuncController formulario = new AddFuncController();
-     formulario.start();
+     AddFuncController Funcformulario = new AddFuncController();
+     Funcformulario.start();
     } 
 
     //__________________________
