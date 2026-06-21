@@ -1,4 +1,7 @@
 package com.implementacoes.Objetos;
+
+import java.time.LocalDate;
+
 public class Entregador extends Funcionario {
     //atributos
     private int gasolina_atual;
@@ -7,7 +10,7 @@ public class Entregador extends Funcionario {
 
     
 
-    public Entregador(String nome, String senha, String email, float salario, String cargo, int data_de_admissao,
+    public Entregador(String nome, String senha, String email, float salario, String cargo, LocalDate data_de_admissao,
             int gasolina_atual) {
         super(nome, senha, email, salario, cargo, data_de_admissao);
         this.gasolina_atual = gasolina_atual;

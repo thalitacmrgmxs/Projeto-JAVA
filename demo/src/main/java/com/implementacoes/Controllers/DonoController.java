@@ -3,6 +3,7 @@ package com.implementacoes.Controllers; //formatado
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.implementacoes.Objetos.Empreendedor;
@@ -145,8 +146,9 @@ public class DonoController implements Initializable {
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
         
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", 12));
-            listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12), new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12));
+            listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
+            listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
+             new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
         }
             //inserindo na tabela 
         FuncionariosTable.setItems(listaFuncionarios);

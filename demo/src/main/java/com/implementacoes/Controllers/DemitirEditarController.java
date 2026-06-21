@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,11 +29,29 @@ public class DemitirEditarController implements Initializable {
 
     @FXML
     void Edit(ActionEvent event) {
+    // 1. Pega o funcionário diretamente da ChoiceBox
+    FuncionarioSele = FuncOpcoesMenu.getValue();
+
+    if (FuncionarioSele != null) {
+        // 2. Atualiza os dados do objeto na memória
+        FuncionarioSele.setNome(FuncNome.getText());
+        FuncionarioSele.setCargo(FuncFuncao.getText());
+        FuncionarioSele.setData_de_admissao(FuncAdmissao.getValue());
+        FuncionarioSele.setSalario(Float.parseFloat(FuncSalario.getText()));
+
+        // 3. Força a ChoiceBox e a tela a atualizarem visualmente
+        int index = DonoController.listaFuncionarios.indexOf(FuncionarioSele);
+        DonoController.listaFuncionarios.set(index, FuncionarioSele);
         
+        System.out.println("Funcionário editado com sucesso!");
+    } else {
+        System.out.println("Nenhum funcionário selecionado para editar.");
     }
+}
+
 
     @FXML
-    private TextField FuncAdmissao;
+    private DatePicker FuncAdmissao;
 
     @FXML
     private TextField FuncFuncao;
@@ -92,7 +111,8 @@ public class DemitirEditarController implements Initializable {
         FuncNome.setText(funcionario.getNome());
         FuncFuncao.setText(funcionario.getCargo());
         FuncSalario.setText(String.valueOf(funcionario.getSalario()));
-        FuncAdmissao.setText(String.valueOf(funcionario.getData_de_admissao())); // Adapte se for tipo Date
+        FuncAdmissao.setValue(funcionario.getData_de_admissao());
+        //FuncAdmissao.setText(String.valueOf(funcionario.getData_de_admissao())); // Adapte se for tipo Date
               // Adapte se for uma lista
     }
 }
