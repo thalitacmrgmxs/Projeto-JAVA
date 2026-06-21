@@ -32,4 +32,12 @@ public class Produtos {
     public StringProperty nomeProperty() { return nome; }
     public DoubleProperty valorProperty() { return valor; }
     public DoubleProperty quantProperty() { return quant; }
+
+    @Override
+    public String toString() {
+        return "Produtos [nome=" + nome + ", valor=" + valor + ", quant=" + quant + "]";
+    }
+
+
+    
 }

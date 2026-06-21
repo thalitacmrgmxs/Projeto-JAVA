@@ -87,6 +87,8 @@ public class DonoController implements Initializable {
     @FXML
     void minusEstoque(ActionEvent event) {
          System.out.println("eliminar Estoque");
+         EdiDeltProdutos EdiDeltProdutosFormulario = new EdiDeltProdutos();
+         EdiDeltProdutosFormulario.start();
         
     }
 
