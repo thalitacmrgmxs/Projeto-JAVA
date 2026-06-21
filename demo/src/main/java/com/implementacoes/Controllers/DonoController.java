@@ -126,11 +126,10 @@ public class DonoController implements Initializable {
         produtosColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
-        
+        if (dono.getNome().equalsIgnoreCase("Thalita")) {
         //criando a lista e inserindo os produtos
         listaEstoque.add(new Produtos("ração", 20, 2));
-       
-
+        }
         //inserindo na tabela
         EstoqueTable.setItems(listaEstoque);
     }
@@ -141,10 +140,11 @@ public class DonoController implements Initializable {
         FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
         
-
-        listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", 12));
-        listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12), new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12));
-        //inserindo na tabela 
+        if (dono.getNome().equalsIgnoreCase("Thalita")) {
+            listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", 12));
+            listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12), new Funcionario("Felipe", "554", "email", 2000, "vendedor", 12));
+        }
+            //inserindo na tabela 
         FuncionariosTable.setItems(listaFuncionarios);
     }
 
@@ -155,13 +155,10 @@ public class DonoController implements Initializable {
        TextNome.setText(dono.getNome());
        nameShop.setText(dono.getNomeEmpreendimento());
        TextEmpreendedor.setText(String.valueOf(dono.getId_empresa()));
-     
+       preencherFuncionariosTable();
+       preencherEstoqueTable();
 
-       if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            preencherFuncionariosTable();
-            preencherEstoqueTable();
-
-    }
+    
 
    
     
