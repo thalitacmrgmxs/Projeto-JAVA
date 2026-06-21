@@ -61,12 +61,12 @@
                   <TableColumn fx:id="taskFuncColumn1" prefWidth="124.0" text="Task" />
                </columns>
             </TableView>
-            <Text fx:id="TextVendas" layoutX="118.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
-            <Text fx:id="TextCompras" layoutX="118.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
-            <Text fx:id="TextTasks" layoutX="90.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
+            <Text fx:id="TextVendas" layoutX="118.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+            <Text fx:id="TextCompras" layoutX="118.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+            <Text fx:id="TextTasks" layoutX="90.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/0" />
             <Text fx:id="TextNome" layoutX="388.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
             <Text fx:id="TextEmpreendedor" layoutX="447.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
-            <Text fx:id="TextSituacao" layoutX="406.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="generico" />
+            <Text fx:id="TextSituacao" layoutX="406.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Em analise..." />
             <Button layoutX="224.0" layoutY="289.0" mnemonicParsing="false" onAction="#plusEstoque" text="+" />
             <Button layoutX="196.0" layoutY="289.0" mnemonicParsing="false" onAction="#minusEstoque" text="-" />
             <Button layoutX="687.0" layoutY="279.0" mnemonicParsing="false" onAction="#plusFuncionarios" text="+" />
