@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.implementacoes.Objetos.Funcionario;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,12 +19,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class DemitirEditarController implements Initializable {
+    //variaveis
+    protected Funcionario FuncionarioSele; 
+     @FXML
+    void Demitir(ActionEvent event) {
+        DonoController.listaFuncionarios.remove(FuncionarioSele);
+    }
 
     @FXML
-    private Button Demitir;
-
-    @FXML
-    private Button Edit;
+    void Edit(ActionEvent event) {
+        
+    }
 
     @FXML
     private TextField FuncAdmissao;
@@ -76,6 +82,7 @@ public class DemitirEditarController implements Initializable {
          FuncOpcoesMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, FuncionarioSelecionado) -> {
             if (FuncionarioSelecionado != null) {
                 preencherCampos(FuncionarioSelecionado);
+                FuncionarioSele = FuncionarioSelecionado;
             }
         });
     }
