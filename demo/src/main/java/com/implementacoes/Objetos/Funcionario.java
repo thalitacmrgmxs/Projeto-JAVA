@@ -81,11 +81,12 @@ public class Funcionario extends Usuario {
         }
         return "";
     }
-
     @Override
     public String toString() {
-        return "Funcionario [salario=" + salario + ", cargo=" + cargo + ", data_de_admissao=" + data_de_admissao + "]";
+        return "Funcionario [" + "Nome: " + getNome() + ", cargo= " + cargo + ", tarefas_Atuais= " + tarefas_Atuais;
     }
+
+    
     
 
     
