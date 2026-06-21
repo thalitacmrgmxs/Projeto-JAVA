@@ -2,9 +2,14 @@ package com.implementacoes.Controllers;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.implementacoes.Objetos.Funcionario;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class DemitirEditarController {
+public class DemitirEditarController implements Initializable {
 
     @FXML
     private Button Demitir;
@@ -30,7 +35,7 @@ public class DemitirEditarController {
     private TextField FuncNome;
 
     @FXML
-    private ChoiceBox<?> FuncOpcoesMenu;
+    private ChoiceBox<Funcionario> FuncOpcoesMenu;
 
     @FXML
     private TextField FuncSalario;
@@ -63,4 +68,24 @@ public class DemitirEditarController {
         }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //1 Vincula a lista de funcionarios ao choicebox
+        FuncOpcoesMenu.setItems(DonoController.listaFuncionarios);
+        
+         FuncOpcoesMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, FuncionarioSelecionado) -> {
+            if (FuncionarioSelecionado != null) {
+                preencherCampos(FuncionarioSelecionado);
+            }
+        });
+    }
+
+    // 3. Método auxiliar para preencher todos os campos da tela
+    private void preencherCampos(Funcionario funcionario) {
+        FuncNome.setText(funcionario.getNome());
+        FuncFuncao.setText(funcionario.getCargo());
+        FuncSalario.setText(String.valueOf(funcionario.getSalario()));
+        FuncAdmissao.setText(String.valueOf(funcionario.getData_de_admissao())); // Adapte se for tipo Date
+              // Adapte se for uma lista
+    }
 }
