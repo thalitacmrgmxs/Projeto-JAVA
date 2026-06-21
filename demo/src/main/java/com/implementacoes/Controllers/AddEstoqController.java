@@ -26,7 +26,32 @@ public class AddEstoqController {
 
     @FXML
     void Confirmar(ActionEvent event) {
-        DonoController.listaEstoque.add(new Produtos(NomeField.getText(),Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()) ));
+        boolean encontrou = false;
+        Produtos produto = (new Produtos(NomeField.getText(),Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText())));
+        //Verificar se existe o produto na lista
+        for (int i = 0; i < DonoController.listaEstoque.size(); i++) {
+
+            if (produto.getNome().equalsIgnoreCase(DonoController.listaEstoque.get(i).getNome())) {
+                DonoController.listaEstoque.get(i).setQuant(DonoController.listaEstoque.get(i).getQuant()+ produto.getQuant());
+                encontrou = true;
+                break;
+                
+            }
+        }
+        //Se não encontrou execute esse comando
+        if (!encontrou) {
+            DonoController.listaEstoque.add(produto);
+        }
+
+
+        NomeField.clear();
+        ValorField.clear();
+        QuantiField.clear();
+
+        //refrescar 
+        
+        
+
     }
 
     public void Start() {
@@ -46,6 +71,7 @@ public class AddEstoqController {
 
             //4.exibir
             JanelaAddEstoq.show();
+            
         } catch (IOException ex ) {
              ex.printStackTrace();
             System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
