@@ -6,6 +6,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.implementacoes.App;
 import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
@@ -44,7 +45,7 @@ public class DonoController implements Initializable {
    protected TableView<Produtos> EstoqueTable;
    
    
-   
+ 
 
     @FXML
     private TableView<Funcionario> FuncionariosTable;
@@ -115,7 +116,19 @@ public class DonoController implements Initializable {
      AddFuncController Funcformulario = new AddFuncController();
      Funcformulario.start();
     } 
+    //voltar para a janela anterior
 
+    @FXML
+    void Voltar(ActionEvent event) {
+        try {
+        App.setRoot("Login");
+        listaEstoque = FXCollections.observableArrayList();
+        listaFuncionarios = FXCollections.observableArrayList();
+    }catch (IOException ex) {
+        ex.printStackTrace();
+        System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
+    }
+    }
     //__________________________
 
     //métodos -- EM ANÁLISE da eficiẽncia desses métodos
