@@ -29,7 +29,7 @@ public class DonoController implements Initializable {
     private Empreendedor dono = Gerenciador.getSelecionado();
     protected static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList();
     protected static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
-
+   
     public DonoController(Empreendedor dono) {
         this.dono = dono;
     }
@@ -39,8 +39,11 @@ public class DonoController implements Initializable {
     }
 
     //Objetos fxml
-    @FXML
-    private TableView<Produtos> EstoqueTable;
+   @FXML 
+   protected TableView<Produtos> EstoqueTable;
+   
+   
+   
 
     @FXML
     private TableView<Funcionario> FuncionariosTable;
