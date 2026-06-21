@@ -86,11 +86,15 @@ public class DonoController implements Initializable {
     @FXML
     void minusEstoque(ActionEvent event) {
          System.out.println("eliminar Estoque");
+        
     }
 
+    //Demitir funcionario
     @FXML
     void minusFuncionarios(ActionEvent event) {
          System.out.println("eliminar funcionario");
+         DemitirEditarController DemEdFormulurario = new DemitirEditarController();
+         DemEdFormulurario.start();
     }
 
     //Adicionar Estoque
