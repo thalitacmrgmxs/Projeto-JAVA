@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.DemitirEditarController">
    <children>
       <Text layoutX="174.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demitir Funcionarios" textAlignment="CENTER" wrappingWidth="242.7294921875">
@@ -17,9 +16,9 @@
          </font>
       </Text>
       <ChoiceBox fx:id="FuncOpcoesMenu" layoutX="147.0" layoutY="77.0" prefHeight="24.0" prefWidth="307.0" />
-      <Button fx:id="Demitir" layoutX="353.0" layoutY="305.0" mnemonicParsing="false" text="Demitir" />
+      <Button layoutX="353.0" layoutY="305.0" mnemonicParsing="false" onAction="#Demitir" text="Demitir" />
       <Label layoutX="56.0" layoutY="140.0" text="Nome:" />
-      <Button fx:id="Edit" layoutX="197.0" layoutY="305.0" mnemonicParsing="false" text="Editar" />
+      <Button layoutX="197.0" layoutY="305.0" mnemonicParsing="false" onAction="#Edit" text="Editar" />
       <Label layoutX="57.0" layoutY="174.0" text="Função:" />
       <TextField fx:id="FuncNome" layoutX="113.0" layoutY="136.0" />
       <TextField fx:id="FuncFuncao" layoutX="113.0" layoutY="170.0" />
