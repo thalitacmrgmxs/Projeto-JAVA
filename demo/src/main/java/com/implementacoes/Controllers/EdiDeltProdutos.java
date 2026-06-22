@@ -7,6 +7,8 @@ package com.implementacoes.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,11 +49,11 @@ public class EdiDeltProdutos implements Initializable {
         }
 
         // 3. Força a ChoiceBox e a tela a atualizarem visualmente
-        int index = DonoController.listaEstoque.indexOf(produtoSel);
+        int index = Gerenciador.getListaEstoque().indexOf(produtoSel);
         if (produtoSel.getQuant() <= 0) {   //se a quant for 0 pode apagar
-            DonoController.listaEstoque.remove(index);
+            Gerenciador.getListaEstoque().remove(index);
         } else {    //senão edite
-            DonoController.listaEstoque.set(index, produtoSel);
+            Gerenciador.getListaEstoque().set(index, produtoSel);
         }
         // limpa
         produtoNome.clear();
@@ -95,7 +97,7 @@ public class EdiDeltProdutos implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // adicionando as opções ao menu
-        OpcoesProdMenu.setItems(DonoController.listaEstoque);
+        OpcoesProdMenu.setItems(Gerenciador.getListaEstoque());
 
         // Adicionar um ouvinte para alterar em tempo Real os campos de acordo com o selecionado
         OpcoesProdMenu.getSelectionModel().selectedItemProperty()

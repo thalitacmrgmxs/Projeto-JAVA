@@ -6,6 +6,8 @@ package com.implementacoes.Controllers;
 
 //importações
 import java.io.IOException;
+
+import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,10 +40,10 @@ public class AddEstoqController {
         Produtos produto = (new Produtos(NomeField.getText(),Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText())));
         
         //Verificar se existe o produto na lista
-        for (int i = 0; i < DonoController.listaEstoque.size(); i++) {
+        for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
             //Condição que verificar um correspondente
-            if (produto.getNome().equalsIgnoreCase(DonoController.listaEstoque.get(i).getNome())) {
-                DonoController.listaEstoque.get(i).setQuant(DonoController.listaEstoque.get(i).getQuant()+ produto.getQuant());
+            if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
+                Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant()+ produto.getQuant());
                 encontrou = true;   //Se houver, atribuir um true ao boolean
                 break;  //e quebramos o loop para evitar pecorrer a lista sem necessidade
                 
@@ -49,7 +51,7 @@ public class AddEstoqController {
         }
         //Se não encontrou execute esse comando
         if (!encontrou) {
-            DonoController.listaEstoque.add(produto); //Adicionou o novo produto a lista
+            Gerenciador.getListaEstoque().add(produto); //Adicionou o novo produto a lista
         }
 
         //Limpamos os textfields para ficar chique

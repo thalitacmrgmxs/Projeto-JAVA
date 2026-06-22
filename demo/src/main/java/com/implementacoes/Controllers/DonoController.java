@@ -40,8 +40,7 @@ import javafx.stage.Stage;
 public class DonoController implements Initializable {
     //variaveis
     private Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
-    protected static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList(); //A lista de Funcionario é distribuida para as outras classes dentro do pacote
-    protected static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();   //A lista de Produdots é distribuida para as outras classes dentro do pacote
+       //A lista de Produdots é distribuida para as outras classes dentro do pacote
     
     //há dois contrutores, um que recebe o empreendedor
     public DonoController(Empreendedor dono) {
@@ -135,8 +134,8 @@ public class DonoController implements Initializable {
         // Tratamento de erro e exceção try_catch
         try {
             App.setRoot("Login");   //mudando a cena
-            listaEstoque = FXCollections.observableArrayList(); //resetando a lista
-            listaFuncionarios = FXCollections.observableArrayList(); //resetando a lista
+            Gerenciador.setListaEstoque(FXCollections.observableArrayList()); //resetando a lista
+            Gerenciador.setListaFuncionarios(FXCollections.observableArrayList()); //resetando a lista
         } 
         catch (IOException ex) {
             ex.printStackTrace();
@@ -161,10 +160,10 @@ public class DonoController implements Initializable {
         //caso especial de thalita
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
             // criando a lista e inserindo os produtos
-            listaEstoque.add(new Produtos("ração", 20, 2));
+            Gerenciador.getListaEstoque().add(new Produtos("ração", 20, 2));
         }
         // inserindo na tabela
-        EstoqueTable.setItems(listaEstoque);
+        EstoqueTable.setItems(Gerenciador.getListaEstoque());
     }
     //Criar um método para preencher a tabela de funcionarios
     private void preencherFuncionariosTable() {
@@ -175,13 +174,13 @@ public class DonoController implements Initializable {
         
         //Caso especial thalita
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
-            listaFuncionarios.addAll(
+            Gerenciador.getListaFuncionarios().add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
+            Gerenciador.getListaFuncionarios().addAll(
                     new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
-                    new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
+                    new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
         }
         // inserindo na tabela
-        FuncionariosTable.setItems(listaFuncionarios);
+        FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
     }
 
 

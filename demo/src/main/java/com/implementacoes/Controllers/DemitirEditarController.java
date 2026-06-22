@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.implementacoes.Objetos.Funcionario;
+import com.implementacoes.Objetos.Gerenciador;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +48,7 @@ public class DemitirEditarController implements Initializable {
     //Método ativado por um ActionEvent para remover o funcionario selecionado
     @FXML
     void Demitir(ActionEvent event) {
-        DonoController.listaFuncionarios.remove(FuncionarioSele);
+        Gerenciador.getListaFuncionarios().remove(FuncionarioSele);
     }
 
     //método para editar as informações do Funcionario
@@ -63,8 +65,8 @@ public class DemitirEditarController implements Initializable {
         FuncionarioSele.setSalario(Float.parseFloat(FuncSalario.getText()));
 
         // 3. Força a ChoiceBox e a tela a atualizarem visualmente
-        int index = DonoController.listaFuncionarios.indexOf(FuncionarioSele);
-        DonoController.listaFuncionarios.set(index, FuncionarioSele);
+        int index = Gerenciador.getListaFuncionarios().indexOf(FuncionarioSele);
+        Gerenciador.getListaFuncionarios().set(index, FuncionarioSele);
         
         System.out.println("Funcionário editado com sucesso!"); //msg para teste
     } else {
@@ -104,7 +106,7 @@ public class DemitirEditarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //1 Vincula a lista de funcionarios ao choicebox
-        FuncOpcoesMenu.setItems(DonoController.listaFuncionarios);
+        FuncOpcoesMenu.setItems(Gerenciador.getListaFuncionarios());
         
         //OBSERVAÇÂO: Talvez eu possa mudar o código abaixo para diminuir o código
         //Adicionando um Ouvinte aos items para observar a escolha no momento
