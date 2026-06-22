@@ -1,12 +1,13 @@
+/* Classe criada para Demitir funcionarios,
+ou seja, elimina-los da lista */
+
+//Pacote correspondente
 package com.implementacoes.Controllers;
-
-
+//importações
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.implementacoes.Objetos.Funcionario;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,37 +20,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+//Classe correspondnete
 public class DemitirEditarController implements Initializable {
     //variaveis
-    protected Funcionario FuncionarioSele; 
-     @FXML
-    void Demitir(ActionEvent event) {
-        DonoController.listaFuncionarios.remove(FuncionarioSele);
-    }
-
-    @FXML
-    void Edit(ActionEvent event) {
-    // 1. Pega o funcionário diretamente da ChoiceBox
-    FuncionarioSele = FuncOpcoesMenu.getValue();
-
-    if (FuncionarioSele != null) {
-        // 2. Atualiza os dados do objeto na memória
-        FuncionarioSele.setNome(FuncNome.getText());
-        FuncionarioSele.setCargo(FuncFuncao.getText());
-        FuncionarioSele.setData_de_admissao(FuncAdmissao.getValue());
-        FuncionarioSele.setSalario(Float.parseFloat(FuncSalario.getText()));
-
-        // 3. Força a ChoiceBox e a tela a atualizarem visualmente
-        int index = DonoController.listaFuncionarios.indexOf(FuncionarioSele);
-        DonoController.listaFuncionarios.set(index, FuncionarioSele);
-        
-        System.out.println("Funcionário editado com sucesso!");
-    } else {
-        System.out.println("Nenhum funcionário selecionado para editar.");
-    }
-}
-
-
+    protected Funcionario FuncionarioSele; //Protected para ser acessivel á todos do pacote
+    //variaveis FXML
     @FXML
     private DatePicker FuncAdmissao;
 
@@ -68,24 +43,56 @@ public class DemitirEditarController implements Initializable {
     @FXML
     private TextField FuncTarefas;
 
-    public void start() {
+    //Método ativado por um ActionEvent para remover o funcionario selecionado
+    @FXML
+    void Demitir(ActionEvent event) {
+        DonoController.listaFuncionarios.remove(FuncionarioSele);
+    }
 
+    //método para editar as informações do Funcionario
+    @FXML
+    void Edit(ActionEvent event) {
+    // 1. Pega o funcionário diretamente da ChoiceBox
+    FuncionarioSele = FuncOpcoesMenu.getValue();
+
+    if (FuncionarioSele != null) {
+        // 2. Atualiza os dados do objeto na memória
+        FuncionarioSele.setNome(FuncNome.getText());
+        FuncionarioSele.setCargo(FuncFuncao.getText());
+        FuncionarioSele.setData_de_admissao(FuncAdmissao.getValue());
+        FuncionarioSele.setSalario(Float.parseFloat(FuncSalario.getText()));
+
+        // 3. Força a ChoiceBox e a tela a atualizarem visualmente
+        int index = DonoController.listaFuncionarios.indexOf(FuncionarioSele);
+        DonoController.listaFuncionarios.set(index, FuncionarioSele);
+        
+        System.out.println("Funcionário editado com sucesso!"); //msg para teste
+    } else {
+        System.out.println("Nenhum funcionário selecionado para editar.");  //msg para teste
+    }
+}
+
+
+    
+    //Inicializar a janela e o palco
+    public void start() {
+        //Adicionamos um try_catch ou seja tratamento de erros e exções 
         try {
         //1. carrega o fxml
         java.net.URL fxmUrl = com.implementacoes.App.class.getResource("/com/implementacoes/Demitir_editar_funcionario.fxml");
-        FXMLLoader loader = new FXMLLoader((fxmUrl));
-        Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader((fxmUrl)); //Criando o FXMLLOADER
+        Parent root = loader.load();    //Carregando a cena dentro do root
 
         //Criar a cena
-        Scene cenaDemitirEditar = new Scene(root);
+        Scene cenaDemitirEditar = new Scene(root); //atribuimos o root á cena
 
         //Criando a janela
         Stage JanelaDemitirEditar = new Stage();
-        JanelaDemitirEditar.setScene(cenaDemitirEditar);
-        JanelaDemitirEditar.setTitle("Demitir e Editar");
+        JanelaDemitirEditar.setScene(cenaDemitirEditar);  //atribuindo a cena á janela
+        JanelaDemitirEditar.setTitle("Demitir e Editar");   //atribuindo o titulo
         
         //mostrando
-        JanelaDemitirEditar.show();
+        JanelaDemitirEditar.show(); //hora do show..ksskks
         
         }catch (IOException ex) {
             ex.printStackTrace();
@@ -93,15 +100,18 @@ public class DemitirEditarController implements Initializable {
         }
     }
 
+    //Inicializando as variaveis da janela
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //1 Vincula a lista de funcionarios ao choicebox
         FuncOpcoesMenu.setItems(DonoController.listaFuncionarios);
         
-         FuncOpcoesMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, FuncionarioSelecionado) -> {
+        //OBSERVAÇÂO: Talvez eu possa mudar o código abaixo para diminuir o código
+        //Adicionando um Ouvinte aos items para observar a escolha no momento
+        FuncOpcoesMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, FuncionarioSelecionado) -> {
             if (FuncionarioSelecionado != null) {
-                preencherCampos(FuncionarioSelecionado);
-                FuncionarioSele = FuncionarioSelecionado;
+                preencherCampos(FuncionarioSelecionado);    //método criado para preencherCampos
+                FuncionarioSele = FuncionarioSelecionado;   //Atribuindo á variavel funcionarioSele
             }
         });
     }
@@ -112,7 +122,6 @@ public class DemitirEditarController implements Initializable {
         FuncFuncao.setText(funcionario.getCargo());
         FuncSalario.setText(String.valueOf(funcionario.getSalario()));
         FuncAdmissao.setValue(funcionario.getData_de_admissao());
-        //FuncAdmissao.setText(String.valueOf(funcionario.getData_de_admissao())); // Adapte se for tipo Date
-              // Adapte se for uma lista
+        
     }
 }

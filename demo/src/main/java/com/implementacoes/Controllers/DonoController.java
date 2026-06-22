@@ -1,17 +1,27 @@
-package com.implementacoes.Controllers; //formatado
+/*Essa clase é responsavel por controlar a janela do Empreendedor,
+a qual ele acessa outras janelas e métodos de outras classes para
+executar determinada ações:
+1. Gerenciador;
+2. EdiDeltProdutos;
+3. DemitirEditarController;
+4.AddEstoqController;
+5.AddFuncController 
+*/
 
 
+//pacote
+package com.implementacoes.Controllers; 
+
+//Importações
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import com.implementacoes.App;
 import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,29 +36,29 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+//sua classe correspondente
 public class DonoController implements Initializable {
     //variaveis
-    private Empreendedor dono = Gerenciador.getSelecionado();
-    protected static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList();
-    protected static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
-   
+    private Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
+    protected static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList(); //A lista de Funcionario é distribuida para as outras classes dentro do pacote
+    protected static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();   //A lista de Produdots é distribuida para as outras classes dentro do pacote
+    
+    //há dois contrutores, um que recebe o empreendedor
     public DonoController(Empreendedor dono) {
         this.dono = dono;
     }
-
+    //Outro que recebe do Gerenciador
     public DonoController() {
         this.dono = Gerenciador.getSelecionado();
     }
 
     //Objetos fxml
-   @FXML 
-   protected TableView<Produtos> EstoqueTable;
+    @FXML 
+    protected TableView<Produtos> EstoqueTable;
    
-   
- 
-
     @FXML
     private TableView<Funcionario> FuncionariosTable;
+
     @FXML
     private TableColumn<Funcionario, String> FuncaoFuncColumn;
 
@@ -85,52 +95,54 @@ public class DonoController implements Initializable {
     @FXML
     private Text nameShop;
 
+    //Eliminar/Editar produto do estoque chamado quando o botão é clicado
     @FXML
     void minusEstoque(ActionEvent event) {
-         System.out.println("eliminar Estoque");
-         EdiDeltProdutos EdiDeltProdutosFormulario = new EdiDeltProdutos();
-         EdiDeltProdutosFormulario.start();
+         System.out.println("eliminar Estoque");    //msg para testes
+         EdiDeltProdutos EdiDeltProdutosFormulario = new EdiDeltProdutos(); //Criamos o objeto do EdiDeltProdutos
+         EdiDeltProdutosFormulario.start(); //Chamamos o método para iniciar a janela
         
     }
 
-    //Demitir funcionario
+    //Demitir funcionario chamado quando o botão é clicado
     @FXML
     void minusFuncionarios(ActionEvent event) {
-         System.out.println("eliminar funcionario");
-         DemitirEditarController DemEdFormulurario = new DemitirEditarController();
-         DemEdFormulurario.start();
+        
+         System.out.println("eliminar funcionario"); // msg para teste
+         DemitirEditarController DemEdFormulurario = new DemitirEditarController(); //Criamos o objeto do  DemitirEditarController
+         DemEdFormulurario.start(); //Chamamos o método para iniciar a janela
     }
 
-    //Adicionar Estoque
+    //Adicionar Estoque chamado quando o botão é clicado
     @FXML
     void plusEstoque(ActionEvent event) {
-        System.out.println("adicionar Estoque");
-        AddEstoqController EstoqFormulario = new AddEstoqController();
-        EstoqFormulario.Start();
+        System.out.println("adicionar Estoque");    //msg para teste
+        AddEstoqController EstoqFormulario = new AddEstoqController();  //criando o objeto do AddEstoqController
+        EstoqFormulario.Start();    //chamamos o método para iniciar a janela
         
     }
     //adicionar mais um funcionario
     @FXML
     void plusFuncionarios(ActionEvent event) {
-     //chamado o controller responsavel por capturar as interações na proxima tela EM ANALISE
-     AddFuncController Funcformulario = new AddFuncController();
-     Funcformulario.start();
+     //chamado o controller responsavel por capturar as interações na proxima tela
+     AddFuncController Funcformulario = new AddFuncController(); //criando o objeto AddFuncController 
+     Funcformulario.start();    //chamamos o método para iniciar a janela
     } 
+    
     //voltar para a janela anterior
-
     @FXML
     void Voltar(ActionEvent event) {
+        // Tratamento de erro e exceção try_catch
         try {
-        App.setRoot("Login");
-        listaEstoque = FXCollections.observableArrayList();
-        listaFuncionarios = FXCollections.observableArrayList();
-    }catch (IOException ex) {
-        ex.printStackTrace();
-        System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
+            App.setRoot("Login");   //mudando a cena
+            listaEstoque = FXCollections.observableArrayList(); //resetando a lista
+            listaFuncionarios = FXCollections.observableArrayList(); //resetando a lista
+        } 
+        catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
+        }
     }
-    }
-    //__________________________
-
     //métodos -- EM ANÁLISE da eficiẽncia desses métodos
     public Empreendedor getDono() {
         return dono;    //Retornar o dono
@@ -142,30 +154,33 @@ public class DonoController implements Initializable {
 
     //Criar um função para preencher o estoque
     private void preencherEstoqueTable() {
-        //determinando o valor correspondente de cada coluna
+        // determinando o valor correspondente de cada coluna
         produtosColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
+        //caso especial de thalita
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
-        //criando a lista e inserindo os produtos
-        listaEstoque.add(new Produtos("ração", 20, 2));
+            // criando a lista e inserindo os produtos
+            listaEstoque.add(new Produtos("ração", 20, 2));
         }
-        //inserindo na tabela
+        // inserindo na tabela
         EstoqueTable.setItems(listaEstoque);
     }
     //Criar um método para preencher a tabela de funcionarios
     private void preencherFuncionariosTable() {
-        //determinado o valor correspondete a cada coluna
+        // determinado o valor correspondete a cada coluna
         NomeFuncColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
         
+        //Caso especial thalita
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
             listaFuncionarios.add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
-            listaFuncionarios.addAll( new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
-             new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
+            listaFuncionarios.addAll(
+                    new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
+                    new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
         }
-            //inserindo na tabela 
+        // inserindo na tabela
         FuncionariosTable.setItems(listaFuncionarios);
     }
 
@@ -173,15 +188,12 @@ public class DonoController implements Initializable {
     //Inicializar as variaveis presentes no GUI
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       //preencher as variaveis
        TextNome.setText(dono.getNome());
        nameShop.setText(dono.getNomeEmpreendimento());
        TextEmpreendedor.setText(String.valueOf(dono.getId_empresa()));
-       preencherFuncionariosTable();
+       //preencher as tableas
+       preencherFuncionariosTable();   
        preencherEstoqueTable();
-
-    
-
-   
-    
 }}
  
