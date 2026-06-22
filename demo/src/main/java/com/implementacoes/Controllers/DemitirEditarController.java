@@ -67,7 +67,8 @@ public class DemitirEditarController implements Initializable {
         // 3. Força a ChoiceBox e a tela a atualizarem visualmente
         int index = Gerenciador.getListaFuncionarios().indexOf(FuncionarioSele);
         Gerenciador.getListaFuncionarios().set(index, FuncionarioSele);
-        
+        int indextemp = DonoController.listaTemporaria.indexOf(FuncionarioSele);
+        DonoController.listaTemporaria.set(indextemp, FuncionarioSele);
         System.out.println("Funcionário editado com sucesso!"); //msg para teste
     } else {
         System.out.println("Nenhum funcionário selecionado para editar.");  //msg para teste
@@ -106,7 +107,7 @@ public class DemitirEditarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //1 Vincula a lista de funcionarios ao choicebox
-        FuncOpcoesMenu.setItems(Gerenciador.getListaFuncionarios());
+        FuncOpcoesMenu.setItems(DonoController.listaTemporaria);
         
         //OBSERVAÇÂO: Talvez eu possa mudar o código abaixo para diminuir o código
         //Adicionando um Ouvinte aos items para observar a escolha no momento
