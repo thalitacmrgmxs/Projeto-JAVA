@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 
 public class Gerenciador {
     // variaveis static(acessiveis a todos)
-    private static ArrayList<Empreendedor> listaEmp = new ArrayList<Empreendedor>();
+    private static ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
     public static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList(); // A lista de // Funcionario é  // distribu// para as outras// classes dentro // do pacote
     private static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
     private static Empreendedor dono;
@@ -24,14 +24,7 @@ public class Gerenciador {
     }
 
     // métodos
-    public static ArrayList<Empreendedor> getListaEmp() {
-        return listaEmp; // retornar a lista de empreendedores
-    }
-
-    public static void setListaEmp(ArrayList<Empreendedor> listaEmpnew) {
-        listaEmp = listaEmpnew; // Altera a lista
-    }
-
+    
     // retonar o selecionado
     public static Empreendedor getSelecionado() {
         return dono;
@@ -65,11 +58,17 @@ public class Gerenciador {
     public static void setDono(Empreendedor dono) {
         Gerenciador.dono = dono;
     }
+    public static ArrayList<Usuario> getListaUsuario() {
+        return listaUsuario;
+    }
 
+    public static void setListaUsuario(ArrayList<Usuario> listaUsuario) {
+        Gerenciador.listaUsuario = listaUsuario;
+    }
 
     //Métodos 
-    public static void adicionar(Empreendedor dono) {
-        listaEmp.add(dono); // adicionar um empreendedor a lista
+    public static void adicionar(Usuario dono) {
+        listaUsuario.add(dono); // adicionar um empreendedor a lista
     }
 
     // método criado para preencher tabelas
@@ -102,14 +101,14 @@ public class Gerenciador {
     }
 
     // método criado para buscar um funcionario especifico
-    public static Empreendedor buscar(String nome, String senha) {
+    public static Usuario buscar(String nome, String senha) {
         // Evita erro se quem chamou o método passou parâmetros nulos
         if (nome == null || senha == null) {
             return null;
         }
 
-        for (int i = 0; i < listaEmp.size(); i++) {
-            Empreendedor emp = listaEmp.get(i);
+        for (int i = 0; i < listaUsuario.size(); i++) {
+            Usuario emp = listaUsuario.get(i);
 
             // Evita testar posições vazias da lista
             if (emp != null && emp.getNome() != null && emp.getSenha() != null) {
@@ -128,6 +127,7 @@ public class Gerenciador {
     static {
         adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
         adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
+        adicionar(new Funcionario("sofia", "1234","email" , 0, "Estoquista", null));
         listaFuncionarios.addAll(
                     new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
                     new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
@@ -137,6 +137,9 @@ public class Gerenciador {
         listaEstoque.add(new Produtos("pão", 2.50, 10.0,"Thalita"));
         listaEstoque.add(new Produtos("doce", 5.0, 4.0, "joão"));    
     }
+
+
+    
         
         
 }

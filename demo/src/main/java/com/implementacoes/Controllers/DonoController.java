@@ -161,11 +161,7 @@ public class DonoController implements Initializable {
         produtosColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
-        //caso especial de thalita
-        /*if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            // criando a lista e inserindo os produtos
-            //Gerenciador.getListaEstoque().add(new Produtos("ração", 20, 2));
-        }*/
+        
         // inserindo na tabela
         listaTemporariaE = Gerenciador.preencherE((dono.getNome()));
         EstoqueTable.setItems(listaTemporariaE);
@@ -177,17 +173,7 @@ public class DonoController implements Initializable {
         FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
        
-        /*       
-        //Caso especial thalita --- Adicionar elementos nas listas
-        if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            Gerenciador.getListaFuncionarios().add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
-            Gerenciador.getListaFuncionarios().addAll(
-                    new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
-                    new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
-        
-                    }*/  
-        // inserindo na tabela
-        //FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
+      
         listaTemporariaF = Gerenciador.preencherF(dono.getNome());
         FuncionariosTable.setItems(listaTemporariaF);
     }
