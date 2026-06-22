@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.implementacoes.Objetos.Funcionario;
+import com.implementacoes.Objetos.Gerenciador;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,7 +52,7 @@ public class AddFuncController implements Initializable {
     //método chamado pelo ActionEvent do botão, a qual ele adicionar um novo funcionario
     @FXML
     void Confirmar(ActionEvent event) {
-        DonoController.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue()));
+        Gerenciador.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue()));
     }
 
     //método para inicializar o palco e a cena correspondente

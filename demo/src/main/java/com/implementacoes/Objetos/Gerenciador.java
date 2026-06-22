@@ -3,13 +3,19 @@ package com.implementacoes.Objetos; //formatado
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 
 public class Gerenciador{
     //variaveis static(acessiveis a todos)
     private static ArrayList<Empreendedor> listaEmp = new ArrayList<Empreendedor>();
+    public static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList(); //A lista de Funcionario é distribuida para as outras classes dentro do pacote
+    private static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
     private static Empreendedor dono;
 
+    
     //Construtor
     private Gerenciador() {
      
@@ -66,6 +72,30 @@ public class Gerenciador{
         adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
         adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
     }
+
+   public static ObservableList<Funcionario> getListaFuncionarios() {
+    return listaFuncionarios;
+   }
+
+   public static void setListaFuncionarios(ObservableList<Funcionario> listaFuncionarios) {
+    Gerenciador.listaFuncionarios = listaFuncionarios;
+   }
+
+   public static ObservableList<Produtos> getListaEstoque() {
+    return listaEstoque;
+   }
+
+   public static void setListaEstoque(ObservableList<Produtos> listaEstoque) {
+    Gerenciador.listaEstoque = listaEstoque;
+   }
+
+   public static Empreendedor getDono() {
+    return dono;
+   }
+
+   public static void setDono(Empreendedor dono) {
+    Gerenciador.dono = dono;
+   }
    }
     
 
