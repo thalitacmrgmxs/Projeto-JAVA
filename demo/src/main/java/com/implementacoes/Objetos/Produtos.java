@@ -10,20 +10,24 @@ public class Produtos {
     private final StringProperty nome;
     private final DoubleProperty valor;
     private final DoubleProperty quant;
-    private final StringProperty proprietario;
+    private final String proprietario;
+
+    public String getProprietario() {
+        return proprietario;
+    }
 
     public Produtos(String nome, double valor, double quant) {
         this.nome = new SimpleStringProperty(nome);
         this.valor = new SimpleDoubleProperty(valor);
         this.quant = new SimpleDoubleProperty(quant);
-        this.proprietario = new SimpleStringProperty("");
+        this.proprietario = "";
     }
 
     public Produtos(String nome, Double valor, Double quant, String proprietario) {
        this.nome = new SimpleStringProperty(nome);
         this.valor = new SimpleDoubleProperty(valor);
         this.quant = new SimpleDoubleProperty(quant);
-        this.proprietario = new SimpleStringProperty(proprietario);
+        this.proprietario = proprietario;
     }
 
 

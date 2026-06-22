@@ -97,7 +97,7 @@ public class EdiDeltProdutos implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // adicionando as opções ao menu
-        OpcoesProdMenu.setItems(Gerenciador.getListaEstoque());
+        OpcoesProdMenu.setItems(DonoController.listaTemporariaE);
 
         // Adicionar um ouvinte para alterar em tempo Real os campos de acordo com o selecionado
         OpcoesProdMenu.getSelectionModel().selectedItemProperty()

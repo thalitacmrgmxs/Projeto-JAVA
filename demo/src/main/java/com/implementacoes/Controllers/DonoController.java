@@ -22,6 +22,8 @@ import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,7 +43,8 @@ public class DonoController implements Initializable {
     //variaveis
     protected static Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
        //A lista de Produdots é distribuida para as outras classes dentro do pacote
-    protected static ObservableList<Funcionario> listaTemporaria = FXCollections.observableArrayList();
+    protected static ObservableList<Funcionario> listaTemporariaF = FXCollections.observableArrayList();
+    protected static ObservableList<Produtos> listaTemporariaE = FXCollections.observableArrayList();
     //há dois contrutores, um que recebe o empreendedor
     public DonoController(Empreendedor donoSel) {
         dono = donoSel;
@@ -159,12 +162,13 @@ public class DonoController implements Initializable {
         QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
         //caso especial de thalita
-        if (dono.getNome().equalsIgnoreCase("Thalita")) {
+        /*if (dono.getNome().equalsIgnoreCase("Thalita")) {
             // criando a lista e inserindo os produtos
             //Gerenciador.getListaEstoque().add(new Produtos("ração", 20, 2));
-        }
+        }*/
         // inserindo na tabela
-        EstoqueTable.setItems(Gerenciador.getListaEstoque());
+        listaTemporariaE = Gerenciador.preencherE((dono.getNome()));
+        EstoqueTable.setItems(listaTemporariaE);
     }
     //Criar um método para preencher a tabela de funcionarios
     private void preencherFuncionariosTable() {
@@ -184,8 +188,8 @@ public class DonoController implements Initializable {
                     }*/  
         // inserindo na tabela
         //FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
-        listaTemporaria = Gerenciador.preencher(dono.getNome());
-        FuncionariosTable.setItems(listaTemporaria);
+        listaTemporariaF = Gerenciador.preencherF(dono.getNome());
+        FuncionariosTable.setItems(listaTemporariaF);
     }
 
 
