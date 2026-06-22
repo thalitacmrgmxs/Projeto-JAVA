@@ -52,7 +52,7 @@ public class AddFuncController implements Initializable {
     //método chamado pelo ActionEvent do botão, a qual ele adicionar um novo funcionario
     @FXML
     void Confirmar(ActionEvent event) {
-        Gerenciador.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue()));
+        Gerenciador.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue(), DonoController.dono.getNomeEmpreendimento() ));
     }
 
     //método para inicializar o palco e a cena correspondente

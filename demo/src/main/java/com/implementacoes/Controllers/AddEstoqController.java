@@ -37,7 +37,8 @@ public class AddEstoqController {
     void Confirmar(ActionEvent event) {
         //Variaveis auxiliares
         boolean encontrou = false;
-        Produtos produto = (new Produtos(NomeField.getText(),Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText())));
+        Produtos produto = (new Produtos(NomeField.getText(),Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), DonoController.dono.getNomeEmpreendimento()));
+       
         
         //Verificar se existe o produto na lista
         for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
