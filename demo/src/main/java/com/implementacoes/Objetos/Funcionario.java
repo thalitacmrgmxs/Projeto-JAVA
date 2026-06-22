@@ -14,6 +14,7 @@ public class Funcionario extends Usuario {
     //atributos
     private float salario;
     private String cargo;
+    private String chefe;
     //private int id;
     
     private LocalDate data_de_admissao;
@@ -24,15 +25,29 @@ public class Funcionario extends Usuario {
     private ArrayList<String> tarefas;
     
     //Construtor
-    public Funcionario(String nome, String senha, String email,float salario, String cargo, LocalDate data_de_admissao2) {
+    public Funcionario(String nome, String senha, String email,float salario, String cargo, LocalDate data_de_admissa,String chefe) {
         super(nome, senha, email);
         this.salario = salario;
         this.cargo = cargo;
-        this.data_de_admissao = data_de_admissao2;
+        this.data_de_admissao = data_de_admissao;
         this.tarefas_Atuais = 0;
+        this.chefe = chefe;
 
         tarefas = new ArrayList<String>();
     }
+
+    public Funcionario(String nome, String senha, String email,float salario, String cargo, LocalDate data_de_admissao) {
+        super(nome, senha, email);
+        this.salario = salario;
+        this.cargo = cargo;
+        this.data_de_admissao = data_de_admissao;
+        this.tarefas_Atuais = 0;
+        this.chefe = "";
+
+        tarefas = new ArrayList<String>();
+    }
+
+    
     //getters and setters 
     public float getSalario() {
         return salario;
@@ -90,6 +105,10 @@ public class Funcionario extends Usuario {
     @Override
     public String toString() {
         return "Funcionario [" + "Nome: " + getNome() + ", cargo= " + cargo + ", tarefas_Atuais= " + tarefas_Atuais;
+    }
+
+    public String getChefe() {
+        return chefe;
     }
 
     

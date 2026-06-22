@@ -39,16 +39,16 @@ import javafx.stage.Stage;
 //sua classe correspondente
 public class DonoController implements Initializable {
     //variaveis
-    private Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
+    protected static Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
        //A lista de Produdots é distribuida para as outras classes dentro do pacote
     
     //há dois contrutores, um que recebe o empreendedor
-    public DonoController(Empreendedor dono) {
-        this.dono = dono;
+    public DonoController(Empreendedor donoSel) {
+        dono = donoSel;
     }
     //Outro que recebe do Gerenciador
     public DonoController() {
-        this.dono = Gerenciador.getSelecionado();
+        dono = Gerenciador.getSelecionado();
     }
 
     //Objetos fxml
@@ -171,16 +171,19 @@ public class DonoController implements Initializable {
         NomeFuncColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
-        
-        //Caso especial thalita
+       
+        /*       
+        //Caso especial thalita --- Adicionar elementos nas listas
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
             Gerenciador.getListaFuncionarios().add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
             Gerenciador.getListaFuncionarios().addAll(
                     new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
                     new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
-        }
+        
+                    }*/  
         // inserindo na tabela
-        FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
+        //FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
+        FuncionariosTable.setItems(Gerenciador.preencher(dono.getNome()));
     }
 
 
