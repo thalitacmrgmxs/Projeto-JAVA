@@ -41,7 +41,7 @@ public class DonoController implements Initializable {
     //variaveis
     protected static Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
        //A lista de Produdots é distribuida para as outras classes dentro do pacote
-    
+    protected static ObservableList<Funcionario> listaTemporaria = FXCollections.observableArrayList();
     //há dois contrutores, um que recebe o empreendedor
     public DonoController(Empreendedor donoSel) {
         dono = donoSel;
@@ -54,6 +54,7 @@ public class DonoController implements Initializable {
     //Objetos fxml
     @FXML 
     protected TableView<Produtos> EstoqueTable;
+    
    
     @FXML
     private TableView<Funcionario> FuncionariosTable;
@@ -93,7 +94,14 @@ public class DonoController implements Initializable {
 
     @FXML
     private Text nameShop;
+     //métodos -- EM ANÁLISE da eficiẽncia desses métodos
+    public Empreendedor getDono() {
+        return dono;    //Retornar o dono
+    }
 
+    public void setDono(Empreendedor dono) {
+        this.dono = dono;   //determinar o dono
+    }
     //Eliminar/Editar produto do estoque chamado quando o botão é clicado
     @FXML
     void minusEstoque(ActionEvent event) {
@@ -134,22 +142,15 @@ public class DonoController implements Initializable {
         // Tratamento de erro e exceção try_catch
         try {
             App.setRoot("Login");   //mudando a cena
-            Gerenciador.setListaEstoque(FXCollections.observableArrayList()); //resetando a lista
-            Gerenciador.setListaFuncionarios(FXCollections.observableArrayList()); //resetando a lista
+            //Gerenciador.setListaEstoque(FXCollections.observableArrayList()); //resetando a lista
+            //Gerenciador.setListaFuncionarios(FXCollections.observableArrayList()); //resetando a lista
         } 
         catch (IOException ex) {
             ex.printStackTrace();
             System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
         }
     }
-    //métodos -- EM ANÁLISE da eficiẽncia desses métodos
-    public Empreendedor getDono() {
-        return dono;    //Retornar o dono
-    }
-
-    public void setDono(Empreendedor dono) {
-        this.dono = dono;   //determinar o dono
-    }
+   
 
     //Criar um função para preencher o estoque
     private void preencherEstoqueTable() {
@@ -160,7 +161,7 @@ public class DonoController implements Initializable {
         //caso especial de thalita
         if (dono.getNome().equalsIgnoreCase("Thalita")) {
             // criando a lista e inserindo os produtos
-            Gerenciador.getListaEstoque().add(new Produtos("ração", 20, 2));
+            //Gerenciador.getListaEstoque().add(new Produtos("ração", 20, 2));
         }
         // inserindo na tabela
         EstoqueTable.setItems(Gerenciador.getListaEstoque());
@@ -183,7 +184,8 @@ public class DonoController implements Initializable {
                     }*/  
         // inserindo na tabela
         //FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
-        FuncionariosTable.setItems(Gerenciador.preencher(dono.getNome()));
+        listaTemporaria = Gerenciador.preencher(dono.getNome());
+        FuncionariosTable.setItems(listaTemporaria);
     }
 
 

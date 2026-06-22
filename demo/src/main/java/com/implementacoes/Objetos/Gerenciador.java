@@ -16,8 +16,7 @@ public class Gerenciador {
                                                                                                        // Funcionario é
                                                                                                        // distribuida
                                                                                                        // para as outras
-                                                                                                       // classes dentro
-                                                                                                       // do pacote
+                                                                                                       // classes dentro // do pacote
     private static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
     private static Empreendedor dono;
 
@@ -115,6 +114,8 @@ public class Gerenciador {
         adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
         listaFuncionarios.addAll(
                     new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
-                    new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"));
-    }
+                    new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
+                    new Funcionario("ferdinando", "1234", "email", 2000, "vendedor", LocalDate.of(2006, 05, 12), "joão"));
+               
+                }
 }
