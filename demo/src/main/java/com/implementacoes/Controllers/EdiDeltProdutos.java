@@ -50,10 +50,13 @@ public class EdiDeltProdutos implements Initializable {
 
         // 3. Força a ChoiceBox e a tela a atualizarem visualmente
         int index = Gerenciador.getListaEstoque().indexOf(produtoSel);
+        int indexT = DonoController.listaTemporariaE.indexOf(produtoSel);
         if (produtoSel.getQuant() <= 0) {   //se a quant for 0 pode apagar
             Gerenciador.getListaEstoque().remove(index);
+            DonoController.listaTemporariaE.remove(indexT);
         } else {    //senão edite
             Gerenciador.getListaEstoque().set(index, produtoSel);
+            DonoController.listaTemporariaE.set(indexT, produtoSel);
         }
         // limpa
         produtoNome.clear();

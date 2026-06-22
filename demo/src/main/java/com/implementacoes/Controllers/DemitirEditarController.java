@@ -67,6 +67,7 @@ public class DemitirEditarController implements Initializable {
         // 3. Força a ChoiceBox e a tela a atualizarem visualmente
         int index = Gerenciador.getListaFuncionarios().indexOf(FuncionarioSele);
         Gerenciador.getListaFuncionarios().set(index, FuncionarioSele);
+        //atualizar os temporarios
         int indextemp = DonoController.listaTemporariaF.indexOf(FuncionarioSele);
         DonoController.listaTemporariaF.set(indextemp, FuncionarioSele);
 
