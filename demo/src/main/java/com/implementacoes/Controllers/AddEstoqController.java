@@ -45,6 +45,9 @@ public class AddEstoqController {
             //Condição que verificar um correspondente
             if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
                 Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant()+ produto.getQuant());
+                //acessando a lista temporaria
+                int index = DonoController.listaTemporariaE.indexOf(produto);
+                DonoController.listaTemporariaE.get(index).setQuant(DonoController.listaTemporariaE.get(i).getQuant()+ produto.getQuant());
                 encontrou = true;   //Se houver, atribuir um true ao boolean
                 break;  //e quebramos o loop para evitar pecorrer a lista sem necessidade
                 
@@ -53,6 +56,7 @@ public class AddEstoqController {
         //Se não encontrou execute esse comando
         if (!encontrou) {
             Gerenciador.getListaEstoque().add(produto); //Adicionou o novo produto a lista
+            DonoController.listaTemporariaE.add(produto); //adicionando na lista temporaria
         }
 
         //Limpamos os textfields para ficar chique
