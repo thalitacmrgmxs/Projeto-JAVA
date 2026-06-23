@@ -16,7 +16,7 @@ public class Gerenciador {
     private static ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
     public static ObservableList<Funcionario> listaFuncionarios = FXCollections.observableArrayList(); // A lista de // Funcionario é  // distribu// para as outras// classes dentro // do pacote
     private static ObservableList<Produtos> listaEstoque = FXCollections.observableArrayList();
-    private static Empreendedor dono;
+    private static Usuario user;
 
     // Construtor
     private Gerenciador() {
@@ -26,13 +26,13 @@ public class Gerenciador {
     // métodos
     
     // retonar o selecionado
-    public static Empreendedor getSelecionado() {
-        return dono;
+    public static Usuario getSelecionado() {
+        return user;
     }
 
     // determinar o selecionado
-    public static void setSelecionado(Empreendedor donoSelecionado) {
-        dono = donoSelecionado;
+    public static void setSelecionado(Usuario donoSelecionado) {
+        user = donoSelecionado;
     }
 
     public static ObservableList<Funcionario> getListaFuncionarios() {
@@ -51,12 +51,12 @@ public class Gerenciador {
         Gerenciador.listaEstoque = listaEstoque;
     }
 
-    public static Empreendedor getDono() {
-        return dono;
+    public static Usuario getDono() {
+        return user;
     }
 
     public static void setDono(Empreendedor dono) {
-        Gerenciador.dono = dono;
+        Gerenciador.user = dono;
     }
     public static ArrayList<Usuario> getListaUsuario() {
         return listaUsuario;
@@ -68,7 +68,7 @@ public class Gerenciador {
 
     //Métodos 
     public static void adicionar(Usuario dono) {
-        listaUsuario.add(dono); // adicionar um empreendedor a lista
+        listaUsuario.add(dono); // adicionar um usuario a uma lista com upcasting
     }
 
     // método criado para preencher tabelas
@@ -127,7 +127,7 @@ public class Gerenciador {
     static {
         adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
         adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
-        adicionar(new Funcionario("sofia", "1234","email" , 0, "Estoquista", null));
+        adicionar(new Funcionario("sofia", "1234","email" , 0, "Estoquista", null, "Thalita"));
         listaFuncionarios.addAll(
                     new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
                     new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),

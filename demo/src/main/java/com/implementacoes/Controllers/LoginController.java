@@ -52,7 +52,7 @@ public class LoginController implements Initializable{
 
         // 2. Faz a busca uma única vez e guarda em uma variável local
         Usuario encontrado = Gerenciador.buscar(usernameString, senhaString);
-        //Gerenciador.setSelecionado(encontrado); //atribui ao setselecionado
+       // Gerenciador.setSelecionado((Empreendedor) encontrado); //atribui ao setselecionado
         System.out.println(Gerenciador.getSelecionado()); //saída para teste
         
         // 3. Verifica se achou o usuário e se ele bate com o tipo escolhido (Ex:
@@ -67,8 +67,14 @@ public class LoginController implements Initializable{
         }
         //Funcionario
         else if (encontrado != null && "Funcionario".equalsIgnoreCase(escolha)) {
-            Funcionario en = (Funcionario) encontrado;
+
+            Funcionario en = (Funcionario) encontrado; //DownCasting
+
             if (en.getCargo().equals("Estoquista")) {
+
+                // Guarda globalmente o usuário que logou
+                Gerenciador.setSelecionado( (Funcionario) encontrado);
+
                 App.setRoot("EstoqueJan");
             }
         }

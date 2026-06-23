@@ -13,7 +13,7 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="601.0" prefWidth="676.0">
          <children>
-            <Text layoutX="245.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo, nome">
+            <Text fx:id="TituloFunc" layoutX="245.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo, nome">
                <font>
                   <Font size="21.0" />
                </font>

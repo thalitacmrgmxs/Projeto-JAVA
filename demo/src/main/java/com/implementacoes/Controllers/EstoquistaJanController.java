@@ -1,19 +1,44 @@
 package com.implementacoes.Controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.implementacoes.App;
+import com.implementacoes.Objetos.Funcionario;
+import com.implementacoes.Objetos.Gerenciador;
+import com.implementacoes.Objetos.Produtos;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
-public class EstoquistaJanController {
+public class EstoquistaJanController implements Initializable {
 
+    
+    private Funcionario funcSel = new Funcionario(null, null, null, 0, null, null);
+    protected static ObservableList<Produtos> listaTemporaria;
+    public EstoquistaJanController() {
+        funcSel = (Funcionario) Gerenciador.getSelecionado();
+    }
+
+     public Funcionario getFuncSel() {
+        return funcSel;
+    }
+
+    public void setFuncSel(Funcionario funcSel) {
+        this.funcSel = funcSel;
+    }
     @FXML
     private Text FuncFuncao;
+
+    @FXML
+    private Text TituloFunc;
 
     @FXML
     private Text FuncNome;
@@ -22,22 +47,22 @@ public class EstoquistaJanController {
     private Text FuncSalario;
 
     @FXML
-    private TableColumn<?, ?> NomeColumnEst;
+    private TableColumn<Produtos, String> NomeColumnEst;
 
     @FXML
-    private TableColumn<?, ?> QuantColumnEst;
+    private TableColumn<Produtos, Double> QuantColumnEst;
 
     @FXML
-    private TableView<?> TableEstoqueProd;
+    private TableView<Produtos> TableEstoqueProd;
 
     @FXML
-    private TableColumn<?, ?> TaksColumn;
+    private TableColumn<Produtos, String> TaksColumn;
 
     @FXML
     private TableView<?> TaskTable;
 
     @FXML
-    private TableColumn<?, ?> ValorColumnEst;
+    private TableColumn<Produtos, Double> ValorColumnEst;
 
     @FXML
     void voltar(ActionEvent event) {
@@ -52,5 +77,30 @@ public class EstoquistaJanController {
             System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
         }
     }
+
+    public void preencheTabela() {
+        NomeColumnEst.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        QuantColumnEst.setCellValueFactory(new PropertyValueFactory<>("quant"));
+        ValorColumnEst.setCellValueFactory(new PropertyValueFactory<>("valor"));
+
+        listaTemporaria = Gerenciador.preencherE(funcSel.getChefe());
+        TableEstoqueProd.setItems(listaTemporaria);
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //Incializando
+        TituloFunc.setText("Bem vindo, " + funcSel.getNome());
+        FuncNome.setText(FuncNome.getText() + funcSel.getNome());
+        FuncFuncao.setText(FuncFuncao.getText() + funcSel.getCargo());
+        FuncSalario.setText(FuncSalario.getText() + String.valueOf(funcSel.getSalario()));
+
+        //preencher a tabela
+        preencheTabela();
+        
+    }
+
+
 
 }
