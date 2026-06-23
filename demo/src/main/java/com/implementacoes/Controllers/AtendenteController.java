@@ -19,7 +19,9 @@ import javafx.scene.text.Text;
 
 public class AtendenteController implements Initializable {
     protected static Atendente funcSel = new Atendente(null, null, null, 0, null, null, null);
-    
+    private Produtos produtoSel;
+    private float valorProdTot = 0;
+    private int quantProdTot = 0;
     public AtendenteController(){
         funcSel = (Atendente) Gerenciador.getSelecionado();
     }
@@ -67,12 +69,24 @@ public class AtendenteController implements Initializable {
 
     @FXML
     void MinusItem(ActionEvent event) {
+        
+        valorProdTot -= Integer.parseInt(quantArea.getText())*produtoSel.getValor();
+        quantProdTot -= Integer.parseInt(quantArea.getText());
+        TotalText.setText("Total: " + String.valueOf(valorProdTot));
+        QuantTotal.setText("Quantidade total: " + String.valueOf(quantProdTot));
 
+        
     }
+    
 
     @FXML
     void plusItem(ActionEvent event) {
-
+        if (quantArea.getText() != "") {
+        valorProdTot += Integer.parseInt(quantArea.getText())*produtoSel.getValor();
+        quantProdTot += Integer.parseInt(quantArea.getText());
+        TotalText.setText("Total: " + String.valueOf(valorProdTot));
+        QuantTotal.setText("Quantidade total: " + String.valueOf(quantProdTot));
+    }
     }
 
     @FXML
@@ -82,6 +96,7 @@ public class AtendenteController implements Initializable {
 
 
     private void PrencherLacunas(Produtos produto) {
+        produtoSel = produto;
         if (produto != null) {
             ProdutoNome.setText("Produto: "+produto.getNome());
             ProdutoValor.setText("Valor: "+String.valueOf(produto.getValor()));
