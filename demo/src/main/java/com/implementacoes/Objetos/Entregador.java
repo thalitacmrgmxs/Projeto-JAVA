@@ -21,11 +21,20 @@ public class Entregador extends Funcionario {
     public void setGasolina_atual(int quant) {
         if (gasolina_atual + quant <= 100) {
             gasolina_atual += quant;
-            gasolina_gasta += quant;
+            if (quant >= 1) {
+            gasolina_gasta += quant;}
+            else {
+                gasolina_gasta += -1*quant;
+            }
         }
         else {
             gasolina_atual += quant - ((gasolina_atual + quant) - 100);
             gasolina_gasta = quant - ((gasolina_atual + quant) - 100);
+            if (quant >= 1) {
+                gasolina_gasta = quant - ((gasolina_atual + quant) - 100);
+            } else {
+                 gasolina_gasta = -1*(quant - ((gasolina_atual + quant) - 100));
+            }
         }
         
     }

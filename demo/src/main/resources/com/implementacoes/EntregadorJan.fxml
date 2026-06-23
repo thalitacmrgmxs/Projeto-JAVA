@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
@@ -30,9 +31,10 @@
             </TableView>
             <Region layoutX="239.0" layoutY="330.0" prefHeight="143.0" prefWidth="188.0" style="-fx-border-color: black;" />
             <Text fx:id="GasAtualText" layoutX="250.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasolina Atual: " wrappingWidth="127.7197265625" />
-            <Button layoutX="338.0" layoutY="484.0" mnemonicParsing="false" onAction="#AddGasolina" text="+" />
+            <Button layoutX="401.0" layoutY="484.0" mnemonicParsing="false" onAction="#AddGasolina" text="+" />
             <Text fx:id="GasGastaText" layoutX="250.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasolina Gasta:" wrappingWidth="124.53564453125" />
-            <Button layoutX="283.0" layoutY="484.0" mnemonicParsing="false" onAction="#MinusGasolina" prefHeight="24.0" prefWidth="32.0" text="-" />
+            <Button layoutX="362.0" layoutY="484.0" mnemonicParsing="false" onAction="#MinusGasolina" prefHeight="24.0" prefWidth="32.0" text="-" />
+            <TextField fx:id="quantArea" layoutX="238.0" layoutY="484.0" prefHeight="24.0" prefWidth="121.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
