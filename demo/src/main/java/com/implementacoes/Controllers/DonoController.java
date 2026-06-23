@@ -41,7 +41,8 @@ import javafx.stage.Stage;
 //sua classe correspondente
 public class DonoController implements Initializable {
     //variaveis
-    protected static Empreendedor dono = (Empreendedor) Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
+    
+    protected static Empreendedor dono;   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
        //A lista de Produdots é distribuida para as outras classes dentro do pacote
     protected static ObservableList<Funcionario> listaTemporariaF = FXCollections.observableArrayList();
     protected static ObservableList<Produtos> listaTemporariaE = FXCollections.observableArrayList();
@@ -51,7 +52,10 @@ public class DonoController implements Initializable {
     }
     //Outro que recebe do Gerenciador
     public DonoController() {
-        dono = (Empreendedor) Gerenciador.getSelecionado();
+        if (Gerenciador.getSelecionado() instanceof Empreendedor) {
+            dono = (Empreendedor) Gerenciador.getSelecionado();
+        }
+        
     }
 
     //Objetos fxml
@@ -110,7 +114,7 @@ public class DonoController implements Initializable {
     void minusEstoque(ActionEvent event) {
          System.out.println("eliminar Estoque");    //msg para testes
          EdiDeltProdutos EdiDeltProdutosFormulario = new EdiDeltProdutos(); //Criamos o objeto do EdiDeltProdutos
-         EdiDeltProdutosFormulario.start(); //Chamamos o método para iniciar a janela
+         EdiDeltProdutosFormulario.start(dono); //Chamamos o método para iniciar a janela
         
     }
 
@@ -128,7 +132,7 @@ public class DonoController implements Initializable {
     void plusEstoque(ActionEvent event) {
         System.out.println("adicionar Estoque");    //msg para teste
         AddEstoqController EstoqFormulario = new AddEstoqController();  //criando o objeto do AddEstoqController
-        EstoqFormulario.Start();    //chamamos o método para iniciar a janela
+        EstoqFormulario.Start(dono);    //chamamos o método para iniciar a janela
         
     }
     //adicionar mais um funcionario
@@ -138,6 +142,8 @@ public class DonoController implements Initializable {
      AddFuncController Funcformulario = new AddFuncController(); //criando o objeto AddFuncController 
      Funcformulario.start();    //chamamos o método para iniciar a janela
     } 
+
+    
     
     //voltar para a janela anterior
     @FXML

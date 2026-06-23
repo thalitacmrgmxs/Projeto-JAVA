@@ -1,15 +1,14 @@
-/*Editar e deletar produtos do estoque */
-
-//pacote
 package com.implementacoes.Controllers;
 
-//importações
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
+import com.implementacoes.Objetos.Usuario;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +19,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-//Respectiva Classe
 public class EdiDeltProdutos implements Initializable {
+    
+    private Usuario user; // Armazena Empreendedor ou Funcionario
 
     @FXML
     private ChoiceBox<Produtos> OpcoesProdMenu;
@@ -35,59 +35,72 @@ public class EdiDeltProdutos implements Initializable {
     @FXML
     private TextField produtoValor;
 
-    //Método chamado quando clica o botão de editar
     @FXML
     void Editar(ActionEvent event) {
-        // acessando o produto no choice box
         Produtos produtoSel = OpcoesProdMenu.getValue();
 
-        // atribuir valores ao objeto do produto
-        if (produtoSel != null) {
-            produtoSel.setNome(produtoNome.getText());
-            produtoSel.setQuant(Double.parseDouble(produtoQuant.getText()));
-            produtoSel.setValor(Double.parseDouble(produtoValor.getText()));
+        // Evita erros se o usuário clicar em Editar sem selecionar nenhum produto
+        if (produtoSel == null) {
+            return; 
         }
 
-        // 3. Força a ChoiceBox e a tela a atualizarem visualmente
+        // Altera as propriedades do produto selecionado
+        produtoSel.setNome(produtoNome.getText());
+        produtoSel.setQuant(Double.parseDouble(produtoQuant.getText()));
+        produtoSel.setValor(Double.parseDouble(produtoValor.getText()));
+
         int index = Gerenciador.getListaEstoque().indexOf(produtoSel);
         int indexT = DonoController.listaTemporariaE.indexOf(produtoSel);
-        if (produtoSel.getQuant() <= 0) {   //se a quant for 0 pode apagar
-            Gerenciador.getListaEstoque().remove(index);
-            DonoController.listaTemporariaE.remove(indexT);
-        } else {    //senão edite
-            Gerenciador.getListaEstoque().set(index, produtoSel);
-            DonoController.listaTemporariaE.set(indexT, produtoSel);
+
+        // Se a quantidade for menor ou igual a zero, remove de vez
+        if (produtoSel.getQuant() <= 0) {   
+            if (index != -1) {
+                Gerenciador.getListaEstoque().remove(index);
+            }
+            
+            if (indexT != -1) {
+                DonoController.listaTemporariaE.remove(indexT);
+            }
+            
+            OpcoesProdMenu.getSelectionModel().clearSelection(); // Deseleciona no menu visual
+        } else {    
+            // Se não, atualiza a posição nas listas
+            if (index != -1) Gerenciador.getListaEstoque().set(index, produtoSel);
+            if (indexT != -1) DonoController.listaTemporariaE.set(indexT, produtoSel);
         }
-        // limpa
+
+        // Limpa os campos de texto
         produtoNome.clear();
         produtoQuant.clear();
         produtoValor.clear();
-
     }
-    //método auxiliar para preencher os campos com as informaçẽos do produto
+
+    // Corrigido para ler o parâmetro enviado pelo listener (evita buscas repetidas na ChoiceBox)
     private void PrencherLacunas(Produtos produto) {
-        Produtos produtoSel = OpcoesProdMenu.getValue();
-        produtoNome.setText(produtoSel.getNome());
-        produtoQuant.setText(String.valueOf(produtoSel.getQuant()));
-        produtoValor.setText(String.valueOf(produtoSel.getValor()));
+        if (produto != null) {
+            produtoNome.setText(produto.getNome());
+            produtoQuant.setText(String.valueOf(produto.getQuant()));
+            produtoValor.setText(String.valueOf(produto.getValor()));
+        }
     }
 
-    //método para iniciar a janela e a cena
-    public void start() {
+    // Método para iniciar a janela (Padrão de troca de dados do JavaFX)
+    public void start(Usuario user) {
         try {
-            // encontrar e inicializar o fxml
             java.net.URL fxmUrl = com.implementacoes.App.class.getResource("/com/implementacoes/Del_edit_produtos.fxml");
             FXMLLoader loader = new FXMLLoader(fxmUrl);
             Parent root = loader.load();
 
-            // criar a cena
-            Scene cenaDelEditProdutos = new Scene(root);
+            // CAPTURA O CONTROLLER REAL CRIADO PELO FXML
+            EdiDeltProdutos controllerReal = loader.getController();
+            
+            // Injeta o usuário na instância real da tela e preenche o menu
+            controllerReal.initUsuario(user);
 
-            // criar a janela
+            Scene cenaDelEditProdutos = new Scene(root);
             Stage JanelaDelEditProdutos = new Stage();
             JanelaDelEditProdutos.setTitle("Editar Produtos");
-            JanelaDelEditProdutos.setScene(cenaDelEditProdutos);
-            //mostrar a janela            
+            JanelaDelEditProdutos.setScene(cenaDelEditProdutos);           
             JanelaDelEditProdutos.show();
 
         } catch (IOException ex) {
@@ -96,20 +109,26 @@ public class EdiDeltProdutos implements Initializable {
         }
     }
 
-    //inicializar as informações
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // adicionando as opções ao menu
-        OpcoesProdMenu.setItems(DonoController.listaTemporariaE);
-
-        // Adicionar um ouvinte para alterar em tempo Real os campos de acordo com o selecionado
-        OpcoesProdMenu.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, ProdutoSelecionado) -> {
-                    if (ProdutoSelecionado != null) {
-                        PrencherLacunas(ProdutoSelecionado);
-                    }
-                });
-
+    // Método auxiliar executado LOGO APÓS a tela abrir para injetar o usuário com segurança
+    public void initUsuario(Usuario user) {
+        this.user = user;
+        
+        // Agora sim, com o "user" devidamente configurado, preenchemos o menu!
+        if (user instanceof Empreendedor) {
+            OpcoesProdMenu.setItems(Gerenciador.preencherE(DonoController.dono.getNome()));
+        } else {
+            OpcoesProdMenu.setItems(Gerenciador.preencherE(EstoquistaJanController.funcSel.getChefe()));
+        }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // O "user" ainda está nulo aqui, por isso removemos a verificação dele daqui.
+        
+        // Mantemos apenas o Listener que monitora a seleção do menu em tempo real
+        OpcoesProdMenu.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, produtoSelecionado) -> {
+                    PrencherLacunas(produtoSelecionado);
+                });
+    }
 }
