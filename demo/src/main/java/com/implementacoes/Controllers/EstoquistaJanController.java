@@ -9,6 +9,7 @@ import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,10 +57,10 @@ public class EstoquistaJanController implements Initializable {
     private TableView<Produtos> TableEstoqueProd;
 
     @FXML
-    private TableColumn<Produtos, String> TaksColumn;
+    private TableColumn<Funcionario, String> TaksColumn;
 
     @FXML
-    private TableView<?> TaskTable;
+    private TableView<Funcionario> TaskTable;
 
     @FXML
     private TableColumn<Produtos, Double> ValorColumnEst;
@@ -109,9 +110,15 @@ public class EstoquistaJanController implements Initializable {
         FuncFuncao.setText(FuncFuncao.getText() + funcSel.getCargo());
         FuncSalario.setText(FuncSalario.getText() + String.valueOf(funcSel.getSalario()));
 
+        //Em DESENVOLVIMENTO
+        /*
         //preencher a tabela
         preencheTabela();
-        
+        //preencher a tabela task
+        TaksColumn.setCellValueFactory(new PropertyValueFactory<>("tarefas"));
+        final ObservableList<Funcionario> listaTemporaria = FXCollections.observableArrayList();
+        listaTemporaria.add((Funcionario) Gerenciador.getListaUsuario().get(2));
+        TaskTable.setItems(FXCollections.observableArrayList(listaTemporaria)); */
     }
 
 

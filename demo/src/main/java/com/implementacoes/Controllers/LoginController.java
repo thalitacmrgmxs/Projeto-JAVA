@@ -77,6 +77,12 @@ public class LoginController implements Initializable{
 
                 App.setRoot("EstoqueJan");
             }
+            else if (en.getCargo().equals("Entregador")) {
+                 // Guarda globalmente o usuário que logou
+                Gerenciador.setSelecionado( (Funcionario) encontrado);
+
+                App.setRoot("EntregadorJan");
+            }
         }
 
          else {
