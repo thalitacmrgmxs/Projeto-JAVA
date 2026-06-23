@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 public class EstoquistaJanController implements Initializable {
 
     
-    private Funcionario funcSel = new Funcionario(null, null, null, 0, null, null);
+    protected static Funcionario funcSel = new Funcionario(null, null, null, 0, null, null);
     protected static ObservableList<Produtos> listaTemporaria;
     public EstoquistaJanController() {
         funcSel = (Funcionario) Gerenciador.getSelecionado();
@@ -31,8 +31,8 @@ public class EstoquistaJanController implements Initializable {
         return funcSel;
     }
 
-    public void setFuncSel(Funcionario funcSel) {
-        this.funcSel = funcSel;
+    public void setFuncSel(Funcionario funcSelT) {
+        funcSel = funcSelT;
     }
     @FXML
     private Text FuncFuncao;
@@ -76,6 +76,19 @@ public class EstoquistaJanController implements Initializable {
             ex.printStackTrace();
             System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
         }
+    }
+
+    @FXML
+    void minusEstoque(ActionEvent event) {
+        EdiDeltProdutos JanEditDEl = new EdiDeltProdutos();
+        JanEditDEl.start(funcSel);
+    }
+
+    @FXML
+    void plusEstoque(ActionEvent event) {
+        System.out.println("adicionar Estoque");    //msg para teste
+        AddEstoqController EstoqFormulario = new AddEstoqController();  //criando o objeto do AddEstoqController
+        EstoqFormulario.Start(funcSel);    //chamamos o método para iniciar a janela
     }
 
     public void preencheTabela() {

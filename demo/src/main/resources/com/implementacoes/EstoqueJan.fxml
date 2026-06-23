@@ -23,7 +23,7 @@
             <Button layoutX="545.0" layoutY="31.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
             <Text fx:id="FuncFuncao" layoutX="80.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Função: " wrappingWidth="124.53564453125" />
             <Text fx:id="FuncSalario" layoutX="80.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario:" wrappingWidth="125.08642578125" />
-            <TableView fx:id="TableEstoqueProd" layoutX="69.0" layoutY="301.0" prefHeight="200.0" prefWidth="539.0">
+            <TableView fx:id="TableEstoqueProd" layoutX="69.0" layoutY="331.0" prefHeight="200.0" prefWidth="539.0">
               <columns>
                 <TableColumn fx:id="NomeColumnEst" prefWidth="150.0" text="Nome" />
                 <TableColumn fx:id="ValorColumnEst" minWidth="0.0" prefWidth="185.0" text="Valor" />
@@ -35,6 +35,8 @@
                 <TableColumn fx:id="TaksColumn" prefWidth="199.0" text="Tarefas" />
               </columns>
             </TableView>
+            <Button layoutX="538.0" layoutY="295.0" mnemonicParsing="false" onAction="#minusEstoque" prefHeight="24.0" prefWidth="30.0" text="-" />
+            <Button layoutX="574.0" layoutY="295.0" mnemonicParsing="false" onAction="#plusEstoque" text="+" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
