@@ -49,6 +49,7 @@ public class DemitirEditarController implements Initializable {
     @FXML
     void Demitir(ActionEvent event) {
         Gerenciador.getListaFuncionarios().remove(FuncionarioSele);
+        DonoController.listaTemporariaF.remove(FuncionarioSele);
     }
 
     //método para editar as informações do Funcionario

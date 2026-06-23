@@ -129,6 +129,8 @@ public class Gerenciador {
         adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
         adicionar(new Funcionario("sofia", "1234","email" , 0, "Estoquista", null, "Thalita"));
         adicionar(new Entregador("gabriel", "02", "email", 2500, "Entregador", LocalDate.of(1908, 01, 02), "joão", 30));
+        adicionar(new Atendente("maria", "111", "email", 1200, "Atendente", LocalDate.of(2000,02,01), "Thalita"));
+        
         listaFuncionarios.addAll(
                     new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
                     new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),

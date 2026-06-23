@@ -23,7 +23,7 @@ public class EstoquistaJanController implements Initializable {
 
     
     protected static Funcionario funcSel = new Funcionario(null, null, null, 0, null, null);
-    protected static ObservableList<Produtos> listaTemporaria;
+    protected static ObservableList<Produtos> listaTemporaria = FXCollections.observableArrayList();
     public EstoquistaJanController() {
         funcSel = (Funcionario) Gerenciador.getSelecionado();
     }
@@ -109,11 +109,11 @@ public class EstoquistaJanController implements Initializable {
         FuncNome.setText(FuncNome.getText() + funcSel.getNome());
         FuncFuncao.setText(FuncFuncao.getText() + funcSel.getCargo());
         FuncSalario.setText(FuncSalario.getText() + String.valueOf(funcSel.getSalario()));
-
+        preencheTabela();
         //Em DESENVOLVIMENTO
         /*
         //preencher a tabela
-        preencheTabela();
+        
         //preencher a tabela task
         TaksColumn.setCellValueFactory(new PropertyValueFactory<>("tarefas"));
         final ObservableList<Funcionario> listaTemporaria = FXCollections.observableArrayList();

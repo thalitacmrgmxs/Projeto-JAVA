@@ -82,6 +82,10 @@ public class LoginController implements Initializable{
                 Gerenciador.setSelecionado( (Funcionario) encontrado);
 
                 App.setRoot("EntregadorJan");
+            } else if (en.getCargo().equalsIgnoreCase("Atendente")) {
+                Gerenciador.setSelecionado( (Funcionario) encontrado);
+
+                App.setRoot("Atendente");
             }
         }
 
@@ -107,7 +111,7 @@ public class LoginController implements Initializable{
     // inicializando com opções
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String[] opcoes = { "Empreendedor", "Funcionario", "Cliente" };
+        String[] opcoes = { "Empreendedor", "Funcionario" };
 
         // Popular o ChoiceBox de forma otimizada
         opcoes_classes.setItems(FXCollections.observableArrayList(opcoes));
