@@ -41,7 +41,7 @@ import javafx.stage.Stage;
 //sua classe correspondente
 public class DonoController implements Initializable {
     //variaveis
-    protected static Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
+    protected static Empreendedor dono = (Empreendedor) Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
        //A lista de Produdots é distribuida para as outras classes dentro do pacote
     protected static ObservableList<Funcionario> listaTemporariaF = FXCollections.observableArrayList();
     protected static ObservableList<Produtos> listaTemporariaE = FXCollections.observableArrayList();
@@ -51,7 +51,7 @@ public class DonoController implements Initializable {
     }
     //Outro que recebe do Gerenciador
     public DonoController() {
-        dono = Gerenciador.getSelecionado();
+        dono = (Empreendedor) Gerenciador.getSelecionado();
     }
 
     //Objetos fxml
