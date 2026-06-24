@@ -28,9 +28,11 @@ public class AtendenteController implements Initializable {
     public AtendenteController(){
         funcSel = (Atendente) Gerenciador.getSelecionado();
     }
-        @FXML
+    
+    @FXML
     private Text FuncFuncao;
 
+    
     @FXML
     private Text FuncNome;
 

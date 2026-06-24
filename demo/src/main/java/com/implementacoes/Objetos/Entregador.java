@@ -44,8 +44,14 @@ public class Entregador extends Funcionario {
     }
 
     public void setGasolina_gasta(int gasolina_gasta) {
-        this.gasolina_gasta = gasolina_gasta;}
-    //método especiais
+        this.gasolina_gasta = gasolina_gasta;
+    }
+
+    public void setGasolina_gasta() {
+        this.gasolina_gasta = 5;
+    }
+    
+        //método especiais
     public void entregar() {
         
     }

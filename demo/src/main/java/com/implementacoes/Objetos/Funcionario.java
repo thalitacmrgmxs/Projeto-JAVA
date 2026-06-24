@@ -111,6 +111,12 @@ public class Funcionario extends Usuario {
         return chefe;
     }
 
+    @Override
+    public String Sinal() {
+        // TODO Auto-generated method stub
+        return ("Funcionario operando");
+    }
+
     
     
 
