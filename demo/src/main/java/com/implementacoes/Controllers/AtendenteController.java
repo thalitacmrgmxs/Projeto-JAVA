@@ -1,8 +1,10 @@
 package com.implementacoes.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.implementacoes.App;
 import com.implementacoes.Objetos.Atendente;
 import com.implementacoes.Objetos.Entregador;
 import com.implementacoes.Objetos.Gerenciador;
@@ -22,6 +24,7 @@ public class AtendenteController implements Initializable {
     private Produtos produtoSel;
     private float valorProdTot = 0;
     private int quantProdTot = 0;
+
     public AtendenteController(){
         funcSel = (Atendente) Gerenciador.getSelecionado();
     }
@@ -68,7 +71,7 @@ public class AtendenteController implements Initializable {
     private TextField quantArea;
 
     @FXML
-    void MinusItem(ActionEvent event) {
+    public void MinusItem(ActionEvent event) {
         
         valorProdTot -= Integer.parseInt(quantArea.getText())*produtoSel.getValor();
         quantProdTot -= Integer.parseInt(quantArea.getText());
@@ -80,7 +83,7 @@ public class AtendenteController implements Initializable {
     
 
     @FXML
-    void plusItem(ActionEvent event) {
+    public void plusItem(ActionEvent event) {
         if (quantArea.getText() != "") {
         valorProdTot += Integer.parseInt(quantArea.getText())*produtoSel.getValor();
         quantProdTot += Integer.parseInt(quantArea.getText());
@@ -91,7 +94,16 @@ public class AtendenteController implements Initializable {
 
     @FXML
     void voltar(ActionEvent event) {
-
+        // Tratamento de erro e exceção try_catch
+        try {
+            App.setRoot("Login");   //mudando a cena
+            //Gerenciador.setListaEstoque(FXCollections.observableArrayList()); //resetando a lista
+            //Gerenciador.setListaFuncionarios(FXCollections.observableArrayList()); //resetando a lista
+        } 
+        catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
+        }
     }
 
 

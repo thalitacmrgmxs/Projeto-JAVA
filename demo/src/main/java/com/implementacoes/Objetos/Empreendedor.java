@@ -23,19 +23,6 @@ public class Empreendedor extends Usuario{
         id_empresa = ThreadLocalRandom.current().nextInt(0, 999);
         //TODO Auto-generated constructor stub
     }
-
-    //métodos especiais 
-
-    public boolean demitir(Funcionario f) {
-        //implementar
-        return true;
-    }
-
-    public boolean contratar(Funcionario f) {
-        //implementar
-        return true;
-    }
-
     //getters and setters
     public String getNomeEmpreendimento() {
         return nomeEmpreendimento;
@@ -43,6 +30,12 @@ public class Empreendedor extends Usuario{
 
     public void setNomeEmpreendimento(String nomeEmpreendimento) {
         this.nomeEmpreendimento = nomeEmpreendimento;
+    }
+
+    @Override
+    public String toString() {
+        return "Empreendedor [nomeEmpreendimento=" + nomeEmpreendimento + ", id_empresa=" + id_empresa + ", vendas="
+                + vendas + ", compras=" + compras + ", listaFuncionarios=" + listaFuncionarios + "]";
     }
 
     public int getId_empresa() {
@@ -69,8 +62,17 @@ public class Empreendedor extends Usuario{
         this.compras = compras;
     }
 
+    //métodos especiais 
+    public boolean demitir(Funcionario f) {
+        //implementar
+        return true;
+    }
+    public boolean contratar(Funcionario f) {
+        //implementar
+        return true;
+    }
     //
-    
-    
-    
+
+   
+ 
 }
