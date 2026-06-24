@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class AddFuncController implements Initializable {
     //Construtor vazio
     public AddFuncController() {
-
+        
     }
     
     //FXMLS

@@ -71,6 +71,7 @@ public class Gerenciador {
         listaUsuario.add(dono); // adicionar um usuario a uma lista com upcasting
     }
 
+    
     // método criado para preencher tabelas
     public static ObservableList<Funcionario> preencherF(String dono) {
         final ObservableList<Funcionario> listaTemporaria = FXCollections.observableArrayList();

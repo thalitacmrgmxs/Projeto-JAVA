@@ -72,6 +72,11 @@ public class Empreendedor extends Usuario{
         return true;
     }
     //
+    @Override
+    public String Sinal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Sinal'");
+    }
 
    
  
