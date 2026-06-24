@@ -8,7 +8,9 @@ import java.util.ResourceBundle;
 import com.implementacoes.App;
 
 import com.implementacoes.Objetos.Empreendedor;
+import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
+import com.implementacoes.Objetos.Usuario;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -39,7 +41,7 @@ public class LoginController implements Initializable{
         //abaixo estão as linhas de saídas para testes
         System.out.println("nome: " + usernameString);
         System.out.println("senha: " + senhaString);
-        System.out.println(Gerenciador.getListaEmp());  //Comando para testar
+        System.out.println(Gerenciador.getListaUsuario());  //Comando para testar
 
 
         // 1. Validação básica de campos vazios
@@ -49,8 +51,8 @@ public class LoginController implements Initializable{
         }
 
         // 2. Faz a busca uma única vez e guarda em uma variável local
-        Empreendedor encontrado = Gerenciador.buscar(usernameString, senhaString);
-        //Gerenciador.setSelecionado(encontrado); //atribui ao setselecionado
+        Usuario encontrado = Gerenciador.buscar(usernameString, senhaString);
+       // Gerenciador.setSelecionado((Empreendedor) encontrado); //atribui ao setselecionado
         System.out.println(Gerenciador.getSelecionado()); //saída para teste
         
         // 3. Verifica se achou o usuário e se ele bate com o tipo escolhido (Ex:
@@ -58,12 +60,36 @@ public class LoginController implements Initializable{
         if (encontrado != null &&  "Empreendedor".equalsIgnoreCase(escolha)) {
 
             // Guarda globalmente o usuário que logou
-            Gerenciador.setSelecionado(encontrado);
+            Gerenciador.setSelecionado( (Empreendedor) encontrado);
             
             // Muda para a tela do Dono
             App.setRoot("Dono");
+        }
+        //Funcionario
+        else if (encontrado != null && "Funcionario".equalsIgnoreCase(escolha)) {
 
-        } else {
+            Funcionario en = (Funcionario) encontrado; //DownCasting
+
+            if (en.getCargo().equals("Estoquista")) {
+
+                // Guarda globalmente o usuário que logou
+                Gerenciador.setSelecionado( (Funcionario) encontrado);
+
+                App.setRoot("EstoqueJan");
+            }
+            else if (en.getCargo().equals("Entregador")) {
+                 // Guarda globalmente o usuário que logou
+                Gerenciador.setSelecionado( (Funcionario) encontrado);
+
+                App.setRoot("EntregadorJan");
+            } else if (en.getCargo().equalsIgnoreCase("Atendente")) {
+                Gerenciador.setSelecionado( (Funcionario) encontrado);
+
+                App.setRoot("Atendente");
+            }
+        }
+
+         else {
             // 4. Se falhar, limpa a senha por segurança e avisa o usuário
             senha.clear();
             exibirAlerta("Falha no Login", "Usuário ou senha incorretos para a categoria selecionada.");
@@ -85,7 +111,7 @@ public class LoginController implements Initializable{
     // inicializando com opções
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String[] opcoes = { "Empreendedor", "Funcionario", "Cliente" };
+        String[] opcoes = { "Empreendedor", "Funcionario" };
 
         // Popular o ChoiceBox de forma otimizada
         opcoes_classes.setItems(FXCollections.observableArrayList(opcoes));

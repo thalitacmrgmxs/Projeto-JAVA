@@ -22,6 +22,8 @@ import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Funcionario;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,16 +41,21 @@ import javafx.stage.Stage;
 //sua classe correspondente
 public class DonoController implements Initializable {
     //variaveis
-    protected static Empreendedor dono = Gerenciador.getSelecionado();   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
+    
+    protected static Empreendedor dono;   //Ele chama o objeto Empreendedor que está contifo no Gerenciador.getSelecionado
        //A lista de Produdots é distribuida para as outras classes dentro do pacote
-    protected static ObservableList<Funcionario> listaTemporaria = FXCollections.observableArrayList();
+    protected static ObservableList<Funcionario> listaTemporariaF = FXCollections.observableArrayList();
+    protected static ObservableList<Produtos> listaTemporariaE = FXCollections.observableArrayList();
     //há dois contrutores, um que recebe o empreendedor
     public DonoController(Empreendedor donoSel) {
         dono = donoSel;
     }
     //Outro que recebe do Gerenciador
     public DonoController() {
-        dono = Gerenciador.getSelecionado();
+        if (Gerenciador.getSelecionado() instanceof Empreendedor) {
+            dono = (Empreendedor) Gerenciador.getSelecionado();
+        }
+        
     }
 
     //Objetos fxml
@@ -107,7 +114,7 @@ public class DonoController implements Initializable {
     void minusEstoque(ActionEvent event) {
          System.out.println("eliminar Estoque");    //msg para testes
          EdiDeltProdutos EdiDeltProdutosFormulario = new EdiDeltProdutos(); //Criamos o objeto do EdiDeltProdutos
-         EdiDeltProdutosFormulario.start(); //Chamamos o método para iniciar a janela
+         EdiDeltProdutosFormulario.start(dono); //Chamamos o método para iniciar a janela
         
     }
 
@@ -125,7 +132,7 @@ public class DonoController implements Initializable {
     void plusEstoque(ActionEvent event) {
         System.out.println("adicionar Estoque");    //msg para teste
         AddEstoqController EstoqFormulario = new AddEstoqController();  //criando o objeto do AddEstoqController
-        EstoqFormulario.Start();    //chamamos o método para iniciar a janela
+        EstoqFormulario.Start(dono);    //chamamos o método para iniciar a janela
         
     }
     //adicionar mais um funcionario
@@ -135,6 +142,8 @@ public class DonoController implements Initializable {
      AddFuncController Funcformulario = new AddFuncController(); //criando o objeto AddFuncController 
      Funcformulario.start();    //chamamos o método para iniciar a janela
     } 
+
+    
     
     //voltar para a janela anterior
     @FXML
@@ -158,13 +167,10 @@ public class DonoController implements Initializable {
         produtosColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         QuantColumn.setCellValueFactory(new PropertyValueFactory<>("quant"));
 
-        //caso especial de thalita
-        if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            // criando a lista e inserindo os produtos
-            //Gerenciador.getListaEstoque().add(new Produtos("ração", 20, 2));
-        }
+        
         // inserindo na tabela
-        EstoqueTable.setItems(Gerenciador.getListaEstoque());
+        listaTemporariaE = Gerenciador.preencherE((dono.getNome()));
+        EstoqueTable.setItems(listaTemporariaE);
     }
     //Criar um método para preencher a tabela de funcionarios
     private void preencherFuncionariosTable() {
@@ -173,19 +179,9 @@ public class DonoController implements Initializable {
         FuncaoFuncColumn.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         taskFuncColumn1.setCellValueFactory(new PropertyValueFactory<>("tarefas_Atuais"));
        
-        /*       
-        //Caso especial thalita --- Adicionar elementos nas listas
-        if (dono.getNome().equalsIgnoreCase("Thalita")) {
-            Gerenciador.getListaFuncionarios().add(new Funcionario("ester", "123", "email", 2000, "motoboy", LocalDate.of(2000, 12, 2)));
-            Gerenciador.getListaFuncionarios().addAll(
-                    new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)),
-                    new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2)));
-        
-                    }*/  
-        // inserindo na tabela
-        //FuncionariosTable.setItems(Gerenciador.getListaFuncionarios());
-        listaTemporaria = Gerenciador.preencher(dono.getNome());
-        FuncionariosTable.setItems(listaTemporaria);
+      
+        listaTemporariaF = Gerenciador.preencherF(dono.getNome());
+        FuncionariosTable.setItems(listaTemporariaF);
     }
 
 

@@ -1,14 +1,10 @@
-/*Classe criada para Adicionar novos produtos ao estoque */
-
-
-//Pacote Correspondente
 package com.implementacoes.Controllers;
 
-//importações
 import java.io.IOException;
-
+import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
+import com.implementacoes.Objetos.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-//Sua respectiva classe
 public class AddEstoqController {
-    public AddEstoqController() {
+    
+    public AddEstoqController() {}
 
-    }
-    //Abaixo estão as variaveis FXML
+    private Usuario user; 
+
     @FXML
     private TextField NomeField;
 
@@ -32,62 +28,94 @@ public class AddEstoqController {
     @FXML
     private TextField ValorField;
 
-    //método FXML que é ativado quando o botão COnfirmar é apertado 
     @FXML
     void Confirmar(ActionEvent event) {
-        //Variaveis auxiliares
-        boolean encontrou = false;
-        Produtos produto = (new Produtos(NomeField.getText(),Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), DonoController.dono.getNomeEmpreendimento()));
-       
-        
-        //Verificar se existe o produto na lista
-        for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
-            //Condição que verificar um correspondente
-            if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
-                Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant()+ produto.getQuant());
-                encontrou = true;   //Se houver, atribuir um true ao boolean
-                break;  //e quebramos o loop para evitar pecorrer a lista sem necessidade
-                
-            }
-        }
-        //Se não encontrou execute esse comando
-        if (!encontrou) {
-            Gerenciador.getListaEstoque().add(produto); //Adicionou o novo produto a lista
+        // Validação básica para evitar campos em branco quebrando o parseDouble
+        if (NomeField.getText().isEmpty() || ValorField.getText().isEmpty() || QuantiField.getText().isEmpty()) {
+            System.out.println("Por favor, preencha todos os campos.");
+            return;
         }
 
-        //Limpamos os textfields para ficar chique
+        boolean encontrou = false;
+        
+        // ---- BLOCO 1: SE FOR EMPREENDEDOR ----
+        if (user instanceof Empreendedor empreendedor) {
+            // Buscamos o nome do empreendimento direto do objeto 'empreendedor' injetado de forma segura!
+            Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empreendedor.getNomeEmpreendimento());
+            
+            for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
+                if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
+                    Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant() + produto.getQuant());
+                    
+                    Produtos produtoExistente = Gerenciador.getListaEstoque().get(i);
+                    int index = DonoController.listaTemporariaE.indexOf(produtoExistente);
+                    
+                    if (index != -1) {
+                        DonoController.listaTemporariaE.get(index).setQuant(DonoController.listaTemporariaE.get(index).getQuant() + produto.getQuant());
+                    }
+                    encontrou = true;   
+                    break;  
+                }
+            }
+            if (!encontrou) {
+                Gerenciador.getListaEstoque().add(produto); 
+                DonoController.listaTemporariaE.add(produto); 
+            }
+
+        // ---- BLOCO 2: SE FOR FUNCIONÁRIO (ESTOQUISTA) ----
+        } else {
+            // Buscamos o chefe/empreendimento cadastrado na janela do Estoquista de forma segura
+            String empresaDoChefe = (EstoquistaJanController.funcSel != null) ? EstoquistaJanController.funcSel.getChefe() : "Geral";
+            Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empresaDoChefe);
+            
+            for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
+                if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
+                    Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant() + produto.getQuant());
+                    
+                    Produtos produtoExistente = Gerenciador.getListaEstoque().get(i);
+                    int index = EstoquistaJanController.listaTemporaria.indexOf(produtoExistente);
+                    
+                    if (index != -1) {
+                        EstoquistaJanController.listaTemporaria.get(index).setQuant(EstoquistaJanController.listaTemporaria.get(index).getQuant() + produto.getQuant());
+                    }
+                    encontrou = true;   
+                    break;  
+                }
+            }
+            if (!encontrou) {
+                Gerenciador.getListaEstoque().add(produto); 
+                EstoquistaJanController.listaTemporaria.add(produto); 
+            }
+        }
+
+        // Limpamos os textfields para ficar chique
         NomeField.clear();
         ValorField.clear();
         QuantiField.clear();
-
     }
 
-    //Método criado para inicializar um novo Stage(Palco) e uma nova Scene(Cena)
-    public void Start() {
-        //Adicionamos um try_catch ou seja tratamento de erros e exções 
+    public void initUsuario(Usuario user) {
+        this.user = user;
+    }
+
+    public void Start(Usuario user) {
         try {
-            //1. carregar o fxml -- Foi necessario fazer a rota a partir do APP
             java.net.URL fxmlUrl = com.implementacoes.App.class.getResource("/com/implementacoes/AddEstoq.fxml");
-            FXMLLoader loader = new FXMLLoader(fxmlUrl); //Criamos um Fxmlloader
-            Parent root = loader.load(); // carregamos o arquivo
+            FXMLLoader loader = new FXMLLoader(fxmlUrl); 
+            Parent root = loader.load(); 
 
-            //2. Criar uma nova cena com o layout fxml
-            Scene CenaAddEstoq = new Scene(root);   //o root serve como a raiz do tree-graph
-
-            //3.Criar um novo palco
-            Stage JanelaAddEstoq = new Stage(); // criamos o objeto Stage
-            JanelaAddEstoq.setTitle("Adicionar Produto"); //Titulo do Stage
-            JanelaAddEstoq.setScene(CenaAddEstoq); // Atribuimos a cena
-
-            //4.exibir
-            JanelaAddEstoq.show(); //hora do show....ksksks
+            AddEstoqController controllReal = loader.getController();
+            controllReal.initUsuario(user);
             
-        } catch (IOException ex ) { //o ioException é obrigatorio para p funcionamento do programa
+            Scene CenaAddEstoq = new Scene(root);   
+            Stage JanelaAddEstoq = new Stage(); 
+            JanelaAddEstoq.setTitle("Adicionar Produto"); 
+            JanelaAddEstoq.setScene(CenaAddEstoq); 
+            JanelaAddEstoq.show(); 
+            
+        } catch (IOException ex ) { 
             ex.printStackTrace();
             System.out.println("Erro ao carregar o arquivo FXML. Verifique o caminho.");
         }
-
-
     }
-
 }

@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class AddFuncController implements Initializable {
     //Construtor vazio
     public AddFuncController() {
-
+        
     }
     
     //FXMLS
@@ -54,7 +54,7 @@ public class AddFuncController implements Initializable {
     @FXML
     public ObservableList<Funcionario> Confirmar(ActionEvent event) {
         Gerenciador.listaFuncionarios.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue(), DonoController.dono.getNome()));
-        DonoController.listaTemporaria.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue(), DonoController.dono.getNome()));
+        DonoController.listaTemporariaF.add(new Funcionario(funcNome.getText(), funcSenha.getText(), FuncEmail.getText(), Float.parseFloat(funcSalario.getText()), funcCargo.getValue() , funcAdmissao.getValue(), DonoController.dono.getNome()));
         return Gerenciador.listaFuncionarios;
     }
 
