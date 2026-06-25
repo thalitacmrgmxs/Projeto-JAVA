@@ -1,4 +1,8 @@
+//Classe abstrata criada para criação das subClasses apartir do Usuario
+//(Empreendedor, Funcionario, Cliente)
+
 package com.implementacoes.Objetos;
+
 public abstract class Usuario {
     //atributos privados
     private String nome;
@@ -9,7 +13,9 @@ public abstract class Usuario {
         this.nome = nome;
         this.senha = senha;
         this.email = email;
-    }
+    } 
+    public abstract String Sinal();
+    
     //getters and setters
     public String getNome() {
         return nome;
@@ -34,6 +40,7 @@ public abstract class Usuario {
         this.email = email;
     }
 
+   
     
     //to string
     @Override

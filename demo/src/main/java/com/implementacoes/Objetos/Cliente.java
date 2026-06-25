@@ -8,6 +8,12 @@ public class Cliente extends Usuario{
         super(nome, senha, email);
         //TODO Auto-generated constructor stub
     }
+
+    @Override
+    public String Sinal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Sinal'");
+    }
     
 
 

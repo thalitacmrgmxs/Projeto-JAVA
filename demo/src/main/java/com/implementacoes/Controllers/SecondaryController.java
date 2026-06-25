@@ -1,5 +1,6 @@
-package com.implementacoes;
+package com.implementacoes.Controllers;
 
+import com.implementacoes.*;
 import java.io.IOException;
 import javafx.fxml.FXML;
 

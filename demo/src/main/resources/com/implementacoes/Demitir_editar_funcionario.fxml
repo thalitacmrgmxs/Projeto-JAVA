@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.DemitirEditarController">
+   <children>
+      <Text layoutX="174.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demitir Funcionarios" textAlignment="CENTER" wrappingWidth="242.7294921875">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="FuncOpcoesMenu" layoutX="147.0" layoutY="77.0" prefHeight="24.0" prefWidth="307.0" />
+      <Button layoutX="353.0" layoutY="305.0" mnemonicParsing="false" onAction="#Demitir" text="Demitir" />
+      <Label layoutX="56.0" layoutY="140.0" text="Nome:" />
+      <Button layoutX="197.0" layoutY="305.0" mnemonicParsing="false" onAction="#Edit" text="Editar" />
+      <Label layoutX="57.0" layoutY="174.0" text="Função:" />
+      <TextField fx:id="FuncNome" layoutX="113.0" layoutY="136.0" />
+      <TextField fx:id="FuncFuncao" layoutX="113.0" layoutY="170.0" />
+      <Label layoutX="56.0" layoutY="211.0" text="Salario:" />
+      <TextField fx:id="FuncSalario" layoutX="112.0" layoutY="207.0" />
+      <Label layoutX="308.0" layoutY="140.0" text="Admissão:" />
+      <Label layoutX="308.0" layoutY="174.0" text="Tarefas:" />
+      <TextField fx:id="FuncTarefas" layoutX="371.0" layoutY="170.0" />
+      <Button layoutX="547.0" layoutY="170.0" mnemonicParsing="false" text="+" />
+      <Label layoutX="308.0" layoutY="211.0" text="Pendencias:" />
+      <Text layoutX="396.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/0" />
+      <DatePicker fx:id="FuncAdmissao" layoutX="376.0" layoutY="136.0" />
+   </children>
+</AnchorPane>
