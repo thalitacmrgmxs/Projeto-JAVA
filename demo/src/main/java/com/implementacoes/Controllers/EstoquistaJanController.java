@@ -1,3 +1,5 @@
+/* Classe gerada  para gerenciar a tela de Estoquista, a qual
+possue o acceso á modificação e visualiação */
 package com.implementacoes.Controllers;
 
 import java.io.IOException;

@@ -1,4 +1,5 @@
-
+/*Classe criada para gerenciar a janella do entregador, a qual
+ele informar a quantidade de gasolina gasta. */
 package com.implementacoes.Controllers;
 
 import java.io.IOException;

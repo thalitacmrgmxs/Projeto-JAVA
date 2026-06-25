@@ -1,3 +1,4 @@
+/* janela para edição dos produtos no estoque */
 package com.implementacoes.Controllers;
 
 import java.io.IOException;

@@ -1,3 +1,7 @@
+/*Classe chamada para realizar o login do usuário 
+por meio da verificação das informações presente na lista
+usuário na classe gerenciador */
+
 package com.implementacoes.Controllers; // Corrigido a formatação
 
 
