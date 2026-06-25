@@ -1,3 +1,8 @@
+/*Organizar o bagulho todo
+Ou seja, O gerenciador cria as principais rotas 
+de comunicação entre as classes.
+*/
+
 package com.implementacoes.Objetos; //formatado
 
 import java.net.URL;

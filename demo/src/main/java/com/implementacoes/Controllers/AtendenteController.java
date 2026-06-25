@@ -1,3 +1,7 @@
+/*Controllar a tela do atendente permitindo a computação das vendas
+realizadas
+
+*/
 package com.implementacoes.Controllers;
 
 import java.io.IOException;
