@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Atendente  extends Funcionario{
 
-    public Atendente(String nome, String senha, String email, float salario, String cargo, LocalDate data_de_admissao) {
+    public Atendente(String nome, String senha, String email, float salario, String cargo, LocalDate data_de_admissao, String string) {
         super(nome, senha, email, salario, cargo, data_de_admissao);
         //TODO Auto-generated constructor stub
     }

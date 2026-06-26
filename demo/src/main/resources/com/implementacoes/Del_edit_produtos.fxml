@@ -8,21 +8,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.EdiDeltProdutos">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffff;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.EdiDeltProdutos">
    <children>
-      <Text layoutX="198.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Produtos" textAlignment="CENTER" wrappingWidth="204.458984375">
+      <Text fill="#001891" layoutX="150.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Produtos" textAlignment="CENTER" wrappingWidth="299.658935546875">
          <font>
-            <Font size="26.0" />
+            <Font name="Impact" size="40.0" />
          </font>
       </Text>
-      <TextField fx:id="produtoNome" layoutX="214.0" layoutY="134.0" />
-      <Label layoutX="213.0" layoutY="109.0" text="Nome" />
-      <TextField fx:id="produtoValor" layoutX="215.0" layoutY="192.0" />
-      <Label layoutX="214.0" layoutY="167.0" text="Valor" />
-      <TextField fx:id="produtoQuant" layoutX="216.0" layoutY="256.0" />
-      <Label layoutX="215.0" layoutY="231.0" text="Quantidade" />
-      <Button layoutX="273.0" layoutY="343.0" mnemonicParsing="false" onAction="#Editar" text="Editar" />
-      <ChoiceBox fx:id="OpcoesProdMenu" layoutX="205.0" layoutY="65.0" prefHeight="24.0" prefWidth="194.0" />
+      <TextField fx:id="produtoNome" layoutX="213.0" layoutY="158.0" />
+      <Label layoutX="215.0" layoutY="133.0" text="Nome" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="produtoValor" layoutX="213.0" layoutY="216.0" />
+      <Label layoutX="214.0" layoutY="190.0" text="Valor" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="produtoQuant" layoutX="213.0" layoutY="279.0" />
+      <Label layoutX="211.0" layoutY="253.0" text="Quantidade" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Button layoutX="265.0" layoutY="327.0" mnemonicParsing="false" onAction="#Editar" style="-fx-background-color: #001891;" text="Editar" textFill="WHITE" />
+      <ChoiceBox fx:id="OpcoesProdMenu" layoutX="197.0" layoutY="98.0" prefHeight="2.0" prefWidth="181.0" />
    </children>
 </AnchorPane>

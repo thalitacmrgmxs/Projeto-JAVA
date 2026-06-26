@@ -40,8 +40,9 @@ public class AddEstoqController {
         boolean encontrou = false;
         
         // ---- BLOCO 1: SE FOR EMPREENDEDOR ----
-        if (user instanceof Empreendedor empreendedor) {
-            // Buscamos o nome do empreendimento direto do objeto 'empreendedor' injetado de forma segura!
+        if (user instanceof Empreendedor) {
+            Empreendedor empreendedor = (Empreendedor) user;
+            // Buscamos o nome do empreendimento direto do objeto 'empreendedor'.
             Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empreendedor.getNomeEmpreendimento());
             
             for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {

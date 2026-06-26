@@ -9,28 +9,49 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.DemitirEditarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.DemitirEditarController">
    <children>
-      <Text layoutX="174.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demitir Funcionarios" textAlignment="CENTER" wrappingWidth="242.7294921875">
+      <Text fill="#001891" layoutX="92.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Demitir Funcionarios" textAlignment="CENTER" wrappingWidth="415.20000000000005">
          <font>
-            <Font size="23.0" />
+            <Font name="Impact" size="36.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="FuncOpcoesMenu" layoutX="147.0" layoutY="77.0" prefHeight="24.0" prefWidth="307.0" />
-      <Button layoutX="353.0" layoutY="305.0" mnemonicParsing="false" onAction="#Demitir" text="Demitir" />
-      <Label layoutX="56.0" layoutY="140.0" text="Nome:" />
-      <Button layoutX="197.0" layoutY="305.0" mnemonicParsing="false" onAction="#Edit" text="Editar" />
-      <Label layoutX="57.0" layoutY="174.0" text="Função:" />
-      <TextField fx:id="FuncNome" layoutX="113.0" layoutY="136.0" />
-      <TextField fx:id="FuncFuncao" layoutX="113.0" layoutY="170.0" />
-      <Label layoutX="56.0" layoutY="211.0" text="Salario:" />
-      <TextField fx:id="FuncSalario" layoutX="112.0" layoutY="207.0" />
-      <Label layoutX="308.0" layoutY="140.0" text="Admissão:" />
-      <Label layoutX="308.0" layoutY="174.0" text="Tarefas:" />
-      <TextField fx:id="FuncTarefas" layoutX="371.0" layoutY="170.0" />
-      <Button layoutX="547.0" layoutY="170.0" mnemonicParsing="false" text="+" />
-      <Label layoutX="308.0" layoutY="211.0" text="Pendencias:" />
-      <Text layoutX="396.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/0" />
-      <DatePicker fx:id="FuncAdmissao" layoutX="376.0" layoutY="136.0" />
+      <ChoiceBox fx:id="FuncOpcoesMenu" layoutX="152.0" layoutY="94.0" prefHeight="20.0" prefWidth="296.0" />
+      <Button layoutX="300.0" layoutY="305.0" mnemonicParsing="false" onAction="#Demitir" style="-fx-background-color: #001891;" text="Demitir" textFill="WHITE" />
+      <Label layoutX="69.0" layoutY="173.0" text="Nome:" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Button layoutX="227.0" layoutY="305.0" mnemonicParsing="false" onAction="#Edit" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: #001891;" text="Editar" textFill="WHITE" />
+      <Label layoutX="65.0" layoutY="210.0" text="Função:" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="FuncNome" layoutX="122.0" layoutY="170.0" />
+      <TextField fx:id="FuncFuncao" layoutX="122.0" layoutY="207.0" />
+      <Label layoutX="67.0" layoutY="244.0" text="Salario:" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="FuncSalario" layoutX="122.0" layoutY="241.0" />
+      <Label layoutX="294.0" layoutY="173.0" text="Admissão:" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="292.0" layoutY="210.0" text="Tarefas:" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="FuncTarefas" layoutX="355.0" layoutY="206.0" prefHeight="26.0" prefWidth="163.0" />
+      <Button layoutX="525.0" layoutY="206.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: #001891;" text="+" textFill="WHITE" />
+      <Label layoutX="292.0" layoutY="245.0" text="Pendencias:" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Text layoutX="376.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0/0">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <DatePicker fx:id="FuncAdmissao" layoutX="370.0" layoutY="170.0" />
    </children>
 </AnchorPane>

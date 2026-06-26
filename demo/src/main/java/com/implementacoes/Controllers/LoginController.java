@@ -100,7 +100,11 @@ public class LoginController implements Initializable{
         }
     }
 
+    
+    @FXML
+    void criarConta(ActionEvent event) {
 
+    }
     // Método auxiliar para exibir alertas na tela do JavaFX
     private void exibirAlerta(String titulo, String mensagem) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
