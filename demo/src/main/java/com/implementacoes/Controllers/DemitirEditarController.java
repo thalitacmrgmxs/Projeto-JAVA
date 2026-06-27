@@ -48,17 +48,20 @@ public class DemitirEditarController implements Initializable {
     //Método ativado por um ActionEvent para remover o funcionario selecionado
     @FXML
     void Demitir(ActionEvent event) {
-        Gerenciador.getListaFuncionarios().remove(FuncionarioSele);
-        DonoController.listaTemporariaF.remove(FuncionarioSele);
+        Gerenciador.getListaFuncionarios().remove(FuncionarioSele); //remove da lista real
+        DonoController.listaTemporariaF.remove(FuncionarioSele); //remove da lista temporaria
     }
 
     //método para editar as informações do Funcionario
     @FXML
     void Edit(ActionEvent event) {
     // 1. Pega o funcionário diretamente da ChoiceBox
-    FuncionarioSele = FuncOpcoesMenu.getValue();
+    //FuncionarioSele = FuncOpcoesMenu.getValue();
 
     if (FuncionarioSele != null) {
+        //seleciona o indice antes da modificação
+        //int index = Gerenciador.getListaFuncionarios().indexOf(FuncionarioSele);
+        int index = DonoController.listaTemporariaF.indexOf(FuncionarioSele);
         // 2. Atualiza os dados do objeto na memória
         FuncionarioSele.setNome(FuncNome.getText());
         FuncionarioSele.setCargo(FuncFuncao.getText());
@@ -66,7 +69,7 @@ public class DemitirEditarController implements Initializable {
         FuncionarioSele.setSalario(Float.parseFloat(FuncSalario.getText()));
 
         // 3. Força a ChoiceBox e a tela a atualizarem visualmente
-        int index = Gerenciador.getListaFuncionarios().indexOf(FuncionarioSele);
+        
         Gerenciador.getListaFuncionarios().set(index, FuncionarioSele);
         //atualizar os temporarios
         int indextemp = DonoController.listaTemporariaF.indexOf(FuncionarioSele);

@@ -33,7 +33,11 @@ public class LoginController implements Initializable{
 
     @FXML
     private TextField username;
-   
+    
+    @FXML
+    void criarConta(ActionEvent event) throws IOException {
+
+    }
     //ação de fazer login
     @FXML
     void fazerLogin(ActionEvent event) throws IOException {
