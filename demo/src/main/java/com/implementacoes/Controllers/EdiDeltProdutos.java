@@ -77,6 +77,8 @@ public class EdiDeltProdutos implements Initializable {
         produtoNome.clear();
         produtoQuant.clear();
         produtoValor.clear();
+
+        
     }
 
     // Corrigido para ler o parâmetro enviado pelo listener (evita buscas repetidas na ChoiceBox)
