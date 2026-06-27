@@ -39,22 +39,23 @@ public class AddEstoqController {
 
         boolean encontrou = false;
         
-        // ---- BLOCO 1: SE FOR EMPREENDEDOR ----
+        // Empreendedor
         if (user instanceof Empreendedor empreendedor) {
-            // Buscamos o nome do empreendimento direto do objeto 'empreendedor' injetado de forma segura!
+            // criamos um objeto produto e inserimos as informações 
             Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empreendedor.getNomeEmpreendimento());
             
+            //verificando se o produto existe no estoque por meio do nome do produto e do proprietario
             for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
-                if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
+                if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome()) && produto.getProprietario().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getProprietario()) ) {
                     Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant() + produto.getQuant());
-                    
+                    /*
                     Produtos produtoExistente = Gerenciador.getListaEstoque().get(i);
                     int index = DonoController.listaTemporariaE.indexOf(produtoExistente);
                     
                     if (index != -1) {
                         DonoController.listaTemporariaE.get(index).setQuant(DonoController.listaTemporariaE.get(index).getQuant() + produto.getQuant());
-                    }
-                    encontrou = true;   
+                    } */
+                    encontrou = true;  
                     break;  
                 }
             }
@@ -63,22 +64,23 @@ public class AddEstoqController {
                 DonoController.listaTemporariaE.add(produto); 
             }
 
-        // ---- BLOCO 2: SE FOR FUNCIONÁRIO (ESTOQUISTA) ----
+        //Funcionario
         } else {
-            // Buscamos o chefe/empreendimento cadastrado na janela do Estoquista de forma segura
-            String empresaDoChefe = (EstoquistaJanController.funcSel != null) ? EstoquistaJanController.funcSel.getChefe() : "Geral";
+            // Buscamos o chefe cadastrado na janela do Estoquista 
+            String empresaDoChefe = (EstoquistaJanController.funcSel.getChefe()) ;
+             
             Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empresaDoChefe);
             
             for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
-                if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome())) {
+                if (produto.getNome().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getNome()) && produto.getProprietario().equalsIgnoreCase(Gerenciador.getListaEstoque().get(i).getProprietario())) {
                     Gerenciador.getListaEstoque().get(i).setQuant(Gerenciador.getListaEstoque().get(i).getQuant() + produto.getQuant());
-                    
+                    /*
                     Produtos produtoExistente = Gerenciador.getListaEstoque().get(i);
                     int index = EstoquistaJanController.listaTemporaria.indexOf(produtoExistente);
                     
                     if (index != -1) {
                         EstoquistaJanController.listaTemporaria.get(index).setQuant(EstoquistaJanController.listaTemporaria.get(index).getQuant() + produto.getQuant());
-                    }
+                    } */
                     encontrou = true;   
                     break;  
                 }

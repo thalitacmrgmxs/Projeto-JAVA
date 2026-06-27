@@ -63,7 +63,7 @@ public class EdiDeltProdutos implements Initializable {
                 DonoController.listaTemporariaE.remove(indexT);
             }
             
-            OpcoesProdMenu.getSelectionModel().clearSelection(); // Deseleciona no menu visual
+            OpcoesProdMenu.getSelectionModel().clearSelection(); 
         } else {    
             // Se não, atualiza a posição nas listas
             if (index != -1) {
@@ -118,10 +118,12 @@ public class EdiDeltProdutos implements Initializable {
     public void initUsuario(Usuario user) {
         this.user = user;
         
-        // Agora sim, com o "user" devidamente configurado, preenchemos o menu!
+        // verificamos se o usuario é empreendedor
         if (user instanceof Empreendedor) {
-            OpcoesProdMenu.setItems(Gerenciador.preencherE(DonoController.dono.getNome()));
+            OpcoesProdMenu.setItems(DonoController.listaTemporariaE);
+            //OpcoesProdMenu.setItems(Gerenciador.preencherE(DonoController.dono.getNome()));
         } else {
+            //OpcoesProdMenu.setItems(DonoController.listaTemporariaE);
             OpcoesProdMenu.setItems(Gerenciador.preencherE(EstoquistaJanController.funcSel.getChefe()));
         }
     }
