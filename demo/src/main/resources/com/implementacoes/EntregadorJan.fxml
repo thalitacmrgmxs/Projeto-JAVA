@@ -10,31 +10,46 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.EntregadorController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.EntregadorController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="601.0" prefWidth="676.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="601.0" prefWidth="676.0" style="-fx-background-color: white;">
          <children>
-            <Text fx:id="TituloFunc" layoutX="245.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo, nome">
+            <Text fx:id="TituloFunc" fill="#001891" layoutX="64.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo, nome" wrappingWidth="486.92449951171875">
                <font>
-                  <Font size="21.0" />
+                  <Font name="Impact" size="36.0" />
                </font>
             </Text>
-            <Region layoutX="69.0" layoutY="122.0" prefHeight="143.0" prefWidth="188.0" style="-fx-border-color: black;" />
-            <Text fx:id="FuncNome" layoutX="80.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="127.7197265625" />
-            <Button layoutX="545.0" layoutY="31.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-            <Text fx:id="FuncFuncao" layoutX="80.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Função: " wrappingWidth="124.53564453125" />
-            <Text fx:id="FuncSalario" layoutX="80.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario:" wrappingWidth="125.08642578125" />
-            <TableView fx:id="TaskTable" layoutX="408.0" layoutY="110.0" prefHeight="155.0" prefWidth="200.0">
+            <Region layoutX="69.0" layoutY="122.0" prefHeight="143.0" prefWidth="188.0" style="-fx-border-color: white;" />
+            <Text fx:id="FuncNome" fill="#001891" layoutX="69.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="187.71974182128906">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Text>
+            <Button layoutX="561.0" layoutY="59.0" mnemonicParsing="false" onAction="#voltar" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #001891;" text="Voltar" textFill="WHITE" />
+            <Text fx:id="FuncFuncao" fill="#001891" layoutX="68.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Função: " wrappingWidth="168.53564453125">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Text>
+            <Text fx:id="FuncSalario" fill="#001891" layoutX="66.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario:" wrappingWidth="171.48638916015625">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Text>
+            <TableView fx:id="TaskTable" layoutX="357.0" layoutY="118.0" prefHeight="401.0" prefWidth="260.0" style="-fx-border-color: #001891; -fx-border-radius: 8;">
               <columns>
                 <TableColumn fx:id="TaksColumn" prefWidth="199.0" text="Tarefas" />
               </columns>
             </TableView>
-            <Region layoutX="239.0" layoutY="330.0" prefHeight="143.0" prefWidth="188.0" style="-fx-border-color: black;" />
-            <Text fx:id="GasAtualText" layoutX="250.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasolina Atual: " wrappingWidth="127.7197265625" />
-            <Button layoutX="401.0" layoutY="484.0" mnemonicParsing="false" onAction="#AddGasolina" text="+" />
-            <Text fx:id="GasGastaText" layoutX="250.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasolina Gasta:" wrappingWidth="124.53564453125" />
-            <Button layoutX="362.0" layoutY="484.0" mnemonicParsing="false" onAction="#MinusGasolina" prefHeight="24.0" prefWidth="32.0" text="-" />
-            <TextField fx:id="quantArea" layoutX="238.0" layoutY="484.0" prefHeight="24.0" prefWidth="121.0" />
+            <Region layoutX="50.0" layoutY="327.0" prefHeight="77.0" prefWidth="270.0" style="-fx-border-color: #001891; -fx-border-radius: 10;" />
+            <Text fx:id="GasAtualText" fill="#001891" layoutX="66.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasolina Atual: " wrappingWidth="281.3197021484375">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Text>
+            <Button layoutX="281.0" layoutY="416.0" mnemonicParsing="false" onAction="#AddGasolina" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: #001891;" text="+" textFill="WHITE" />
+            <Text fx:id="GasGastaText" fill="#001891" layoutX="66.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasolina Gasta:" wrappingWidth="266.93560791015625">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Text>
+            <Button layoutX="242.0" layoutY="416.0" mnemonicParsing="false" onAction="#MinusGasolina" prefHeight="26.0" prefWidth="29.0" style="-fx-background-color: #001891;" text="-" textFill="WHITE" />
+            <TextField fx:id="quantArea" layoutX="50.0" layoutY="416.0" prefHeight="26.0" prefWidth="181.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

@@ -65,8 +65,12 @@ public class EdiDeltProdutos implements Initializable {
             OpcoesProdMenu.getSelectionModel().clearSelection(); // Deseleciona no menu visual
         } else {    
             // Se não, atualiza a posição nas listas
-            if (index != -1) Gerenciador.getListaEstoque().set(index, produtoSel);
-            if (indexT != -1) DonoController.listaTemporariaE.set(indexT, produtoSel);
+            if (index != -1) {
+                Gerenciador.getListaEstoque().set(index, produtoSel);}
+            
+            if (indexT != -1) {
+                DonoController.listaTemporariaE.set(indexT, produtoSel);
+            }
         }
 
         // Limpa os campos de texto
