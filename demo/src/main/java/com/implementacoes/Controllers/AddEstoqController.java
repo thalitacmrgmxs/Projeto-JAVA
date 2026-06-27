@@ -6,6 +6,8 @@ import com.implementacoes.Objetos.Empreendedor;
 import com.implementacoes.Objetos.Gerenciador;
 import com.implementacoes.Objetos.Produtos;
 import com.implementacoes.Objetos.Usuario;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,11 +32,11 @@ public class AddEstoqController {
     private TextField ValorField;
 
     @FXML
-    void Confirmar(ActionEvent event) {
+    public ObservableList<Produtos> Confirmar(ActionEvent event) {
         // Validação básica para evitar campos em branco quebrando o parseDouble
         if (NomeField.getText().isEmpty() || ValorField.getText().isEmpty() || QuantiField.getText().isEmpty()) {
             System.out.println("Por favor, preencha todos os campos.");
-            return;
+            return Gerenciador.getListaEstoque();
         }
 
         boolean encontrou = false;
@@ -42,7 +44,7 @@ public class AddEstoqController {
         // Empreendedor
         if (user instanceof Empreendedor empreendedor) {
             // criamos um objeto produto e inserimos as informações 
-            Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empreendedor.getNomeEmpreendimento());
+            Produtos produto = new Produtos(NomeField.getText(), Double.parseDouble(ValorField.getText()), Double.parseDouble(QuantiField.getText()), empreendedor.getNome());
             
             //verificando se o produto existe no estoque por meio do nome do produto e do proprietario
             for (int i = 0; i < Gerenciador.getListaEstoque().size(); i++) {
@@ -89,12 +91,15 @@ public class AddEstoqController {
                 Gerenciador.getListaEstoque().add(produto); 
                 EstoquistaJanController.listaTemporaria.add(produto); 
             }
+
         }
 
         // Limpamos os textfields para ficar chique
         NomeField.clear();
         ValorField.clear();
         QuantiField.clear();
+
+        return Gerenciador.getListaEstoque();
     }
 
     public void initUsuario(Usuario user) {
