@@ -14,7 +14,7 @@ public abstract class Usuario {
         this.senha = senha;
         this.email = email;
     } 
-    public abstract String Sinal();
+    
     
     //getters and setters
     public String getNome() {

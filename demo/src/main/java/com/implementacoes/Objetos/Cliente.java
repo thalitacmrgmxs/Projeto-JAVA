@@ -1,5 +1,5 @@
 package com.implementacoes.Objetos;
-public class Cliente extends Usuario{
+public class Cliente extends Usuario implements UsuarioAcoes{
     //atributos
     
     public Carrinho<Produtos> meuCarrinho = new Carrinho<>();
@@ -12,8 +12,10 @@ public class Cliente extends Usuario{
     @Override
     public String Sinal() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Sinal'");
+        throw new UnsupportedOperationException("Unimplemented method 'sinal'");
     }
+
+    
     
 
 

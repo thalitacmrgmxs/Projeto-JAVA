@@ -8,7 +8,7 @@ package com.implementacoes.Objetos;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Empreendedor extends Usuario{
+public class Empreendedor extends Usuario implements UsuarioAcoes{
 
     //atributos
     private String nomeEmpreendimento;
