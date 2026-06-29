@@ -95,6 +95,7 @@ public class AtendenteController implements Initializable {
         quantProdTot += Integer.parseInt(quantArea.getText());
         TotalText.setText("Total: " + String.valueOf(valorProdTot));
         QuantTotal.setText("Quantidade total: " + String.valueOf(quantProdTot));
+        DonoController.dono.setVendas(valorProdTot);
     }
     }
 

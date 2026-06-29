@@ -7,21 +7,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.CriarContaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.implementacoes.Controllers.CriarContaController">
    <children>
-      <Button layoutX="258.0" layoutY="338.0" mnemonicParsing="false" onAction="#Confirmar" text="Confirmar" />
-      <Text layoutX="240.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar Conta">
+      <Button layoutX="259.0" layoutY="307.0" mnemonicParsing="false" onAction="#Confirmar" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #001891;" text="Confirmar" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="21.0" />
+            <Font size="13.0" />
+         </font></Button>
+      <Text fill="#001891" layoutX="216.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar Conta">
+         <font>
+            <Font name="Impact" size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="NomeField" layoutX="56.0" layoutY="91.0" />
-      <Label layoutX="56.0" layoutY="68.0" prefHeight="16.0" prefWidth="50.0" text="Nome" />
-      <TextField fx:id="SenhaField" layoutX="347.0" layoutY="91.0" />
-      <Label layoutX="347.0" layoutY="68.0" prefHeight="16.0" prefWidth="50.0" text="Senha" />
-      <TextField fx:id="EmailField" layoutX="56.0" layoutY="159.0" />
-      <Label layoutX="56.0" layoutY="136.0" prefHeight="16.0" prefWidth="50.0" text="Email" />
-      <TextField fx:id="EmpresaField" layoutX="342.0" layoutY="159.0" />
-      <Label layoutX="342.0" layoutY="136.0" prefHeight="16.0" prefWidth="181.0" text="Nome do Empreendimento" />
+      <TextField fx:id="NomeField" layoutX="112.0" layoutY="174.0" prefHeight="26.0" prefWidth="166.0" />
+      <Label layoutX="112.0" layoutY="145.0" prefHeight="16.0" prefWidth="50.0" text="Nome" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="SenhaField" layoutX="321.0" layoutY="174.0" prefHeight="26.0" prefWidth="166.0" />
+      <Label layoutX="321.0" layoutY="145.0" prefHeight="16.0" prefWidth="50.0" text="Senha" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="EmailField" layoutX="112.0" layoutY="246.0" prefHeight="26.0" prefWidth="166.0" />
+      <Label layoutX="112.0" layoutY="215.0" prefHeight="16.0" prefWidth="50.0" text="Email" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="EmpresaField" layoutX="321.0" layoutY="246.0" prefHeight="26.0" prefWidth="166.0" />
+      <Label layoutX="321.0" layoutY="216.0" prefHeight="16.0" prefWidth="181.0" text="Nome do Empreendimento" textFill="#001891">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>
