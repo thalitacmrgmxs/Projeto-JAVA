@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart.Data;
 
-public class Funcionario extends Usuario {
+public class Funcionario extends Usuario implements UsuarioAcoes{
     //atributos
     private float salario;
     private String cargo;
