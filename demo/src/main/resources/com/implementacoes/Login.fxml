@@ -21,7 +21,7 @@
       <Label layoutX="231.0" layoutY="148.0" text="Usuário" textFill="#001891" />
       <Label layoutX="227.0" layoutY="200.0" text="Senha" textFill="#001891" />
       <Button layoutX="247.0" layoutY="316.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="9.0" prefWidth="106.0" style="-fx-background-color: #001891;" text="Confirmar" textFill="WHITE" />
-      <Button layoutX="259.0" layoutY="354.0" mnemonicParsing="false" onAction="#criarConta" prefHeight="11.0" prefWidth="82.0" style="-fx-background-color: fffff;" text="Criar conta">
+      <Button layoutX="259.0" layoutY="354.0" mnemonicParsing="false" onAction="#criarConta" prefHeight="11.0" prefWidth="82.0" style="-fx-background-color: #fffff;" text="Criar conta">
          <font>
             <Font size="9.0" />
          </font>
