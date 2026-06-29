@@ -36,7 +36,8 @@ public class LoginController implements Initializable{
     
     @FXML
     void criarConta(ActionEvent event) throws IOException {
-
+        CriarContaController criarContaForm = new CriarContaController();
+        criarContaForm.start();
     }
     //ação de fazer login
     @FXML
