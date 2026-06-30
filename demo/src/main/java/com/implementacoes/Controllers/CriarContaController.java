@@ -34,12 +34,36 @@ public class CriarContaController {
     @FXML
     public boolean Confirmar(ActionEvent event) {
         try {
-        Gerenciador.adicionar(new Empreendedor(NomeField.getText(), SenhaField.getText(), EmailField.getText(), EmpresaField.getText()));
-        return true;
-    } catch (Exception e) {
+            boolean encontrado = false;
+            //verificação de existencia
+            for (int i = 0; i < Gerenciador.getListaUsuario().size(); i++) {
+                if (NomeField.getText().equalsIgnoreCase(Gerenciador.getListaUsuario().get(i).getNome())) {
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) {
+                Gerenciador.adicionar(new Empreendedor(NomeField.getText(), SenhaField.getText(), EmailField.getText(), EmpresaField.getText()));
+                return true;
+            } else {
+                exibirAlerta("Usuario Existente", "Altere o nome de usuario");
+                return false;
+            }
+            
+        
+            
+        } catch (Exception e) {
             System.out.println("Deu erro na criação de conta");
             return false;
         }
+    }
+
+    // Método auxiliar para exibir alertas na tela do JavaFX
+    private void exibirAlerta(String titulo, String mensagem) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 
     public void start() {
