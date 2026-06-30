@@ -126,20 +126,7 @@ public class Gerenciador {
    
     // método selecionado quando o programa é ligado
     static {
-        adicionar(new Empreendedor("Thalita", "123", "nome@gmail.com", "Designer Com Thalita"));
-        adicionar(new Empreendedor("joão", "12", "jeve@gmail.com ", "hq"));
-        adicionar(new Funcionario("sofia", "1234","email" , 0, "Estoquista", null, "Thalita"));
-        adicionar(new Entregador("gabriel", "02", "email", 2500, "Entregador", LocalDate.of(1908, 01, 02), "joão", 30));
-        adicionar(new Atendente("maria", "111", "email", 1200, "Atendente", LocalDate.of(2000,02,01), "Thalita"));
-        
-        listaFuncionarios.addAll(
-                    new Funcionario("Felipe", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
-                    new Funcionario("Maria", "554", "email", 2000, "vendedor", LocalDate.of(2000, 12, 2), "thalita"),
-                    new Funcionario("ferdinando", "1234", "email", 2000, "vendedor", LocalDate.of(2006, 05, 12), "joão"));
-               
-        
-        listaEstoque.add(new Produtos("pão", 2.50, 10.0,"Thalita"));
-        listaEstoque.add(new Produtos("doce", 5.0, 4.0, "joão"));    
+            
     }
 
 
