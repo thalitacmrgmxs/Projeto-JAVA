@@ -45,7 +45,7 @@ public class CriarContaController {
                 Gerenciador.adicionar(new Empreendedor(NomeField.getText(), SenhaField.getText(), EmailField.getText(), EmpresaField.getText()));
                 return true;
             } else {
-                exibirAlerta("usuario encontrado", "Altere o nome de usuario");
+                exibirAlerta("Usuario Existente", "Altere o nome de usuario");
                 return false;
             }
             
